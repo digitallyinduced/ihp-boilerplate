@@ -1,6 +1,5 @@
 module Model.Schema where
-import ClassyPrelude (Maybe (..), (<>), Bool (..))
-import TurboHaskell.SchemaSupport
+import TurboHaskell.SchemaPrelude
 
 database = [
     -- Here you can add your database schema
