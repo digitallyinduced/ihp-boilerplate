@@ -9,7 +9,7 @@ import Apps.Web.Types
 import TurboHaskell.FrameworkConfig
 
 instance HasPath RootApplication where
-	pathTo _ = ""
+    pathTo _ = ""
 instance CanRoute RootApplication () where
     parseRoute = parseRoute @WebApplication
 
