@@ -5,31 +5,17 @@ let
             cabal-install
             base
             classy-prelude
-            directory
-            free
-            string-conversions
-            wai
-            mtl
             blaze-html
-            blaze-markup
             wai
-            mtl
             text
             postgresql-simple
-            wai-util
             aeson
-            uuid
             hlint
-            parsec
-            template-haskell
-            interpolate
-            uri-encode
             generic-lens
-            tz
             turbohaskell
         ];
         otherDeps = p: with p; [
-            imagemagick
+            # Native dependencies, e.g. imagemagick
         ];
         projectPath = ./.;
     };
