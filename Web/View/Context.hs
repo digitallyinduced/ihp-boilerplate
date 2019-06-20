@@ -8,7 +8,7 @@ import qualified TurboHaskell.ControllerSupport
 import TurboHaskell.HaskellSupport
 import TurboHaskell.ModelSupport
 import Helper.Controller
-import Model.Generated.Types
+import Generated.Types
 import qualified Network.Wai
 import Data.Dynamic
 import qualified TurboHaskell.ViewSupport as ViewSupport

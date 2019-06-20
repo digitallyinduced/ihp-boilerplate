@@ -10,7 +10,7 @@ import           TurboHaskell.ModelSupport
 import           Helper.Controller
 import qualified Network.Wai
 import TurboHaskell.ViewSupport
-import Model.Generated.Types
+import Generated.Types
 import Data.Dynamic
 import Data.Data
 

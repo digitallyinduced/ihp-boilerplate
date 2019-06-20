@@ -4,7 +4,7 @@ import ClassyPrelude hiding (pack)
 import TurboHaskell.Controller.Session
 import TurboHaskell.Controller.RequestContext
 import TurboHaskell.ModelSupport
-import Model.Generated.Types
+import Generated.Types
 import Data.Dynamic
 import TurboHaskell.Controller.Context
 import qualified Control.Newtype.Generics as Newtype

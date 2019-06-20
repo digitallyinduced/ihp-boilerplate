@@ -2,7 +2,7 @@ module Application.Validation where
 
 import TurboHaskell.ModelPrelude
 import Web.Controller.Context
-import Model.Generated.Types
+import Generated.Types
 
 -- Here you can place validation logic for your models
 -- 
