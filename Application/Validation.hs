@@ -1,7 +1,7 @@
-module Apps.Web.Validation where
+module Application.Validation where
 
 import TurboHaskell.ModelPrelude
-import Apps.Web.Controller.Context
+import Web.Controller.Context
 import Model.Generated.Types
 
 -- Here you can place validation logic for your models

@@ -1,4 +1,4 @@
-module Helper.Controller (
+module Application.Helper.Controller (
     -- To use the built in login:
     -- module TurboHaskell.LoginSupport.Helper.Controller
 ) where

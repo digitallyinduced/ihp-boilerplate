@@ -1,11 +1,11 @@
-module Apps.Web.View.Layout (defaultLayout, Html) where
+module Web.View.Layout (defaultLayout, Html) where
 
 import TurboHaskell.ViewPrelude
 import TurboHaskell.Environment
 import qualified Text.Blaze.Html5            as H
 import qualified Text.Blaze.Html5.Attributes as A
-import Apps.Web.Types
-import Apps.Web.Routes
+import Web.Types
+import Web.Routes
 import qualified TurboHaskell.FrameworkConfig as FrameworkConfig
 import Config ()
 

@@ -1,4 +1,4 @@
-module Helper.View (
+module Application.Helper.View (
     -- To use the built in login:
     -- module TurboHaskell.LoginSupport.Helper.View
 ) where

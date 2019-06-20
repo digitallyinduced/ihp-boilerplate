@@ -1,7 +1,7 @@
-module Apps.Web.View.Context where
+module Web.View.Context where
 
 import ClassyPrelude
-import Apps.Web.Controller.Context
+import Web.Controller.Context
 import qualified TurboHaskell.Controller.Session
 import TurboHaskell.ControllerSupport  (RequestContext (RequestContext))
 import qualified TurboHaskell.ControllerSupport
@@ -12,8 +12,8 @@ import Model.Generated.Types
 import qualified Network.Wai
 import Data.Dynamic
 import qualified TurboHaskell.ViewSupport as ViewSupport
-import Apps.Web.View.Layout
-import Apps.Web.Types
+import Web.View.Layout
+import Web.Types
 
 instance ViewSupport.CreateViewContext ViewContext where
     type ControllerContext ViewContext = ControllerContext

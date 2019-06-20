@@ -4,8 +4,8 @@ import ClassyPrelude
 import Config
 import qualified TurboHaskell.Server
 import TurboHaskell.RouterSupport
-import Apps.Web.App
-import Apps.Web.Types
+import Web.App
+import Web.Types
 import TurboHaskell.FrameworkConfig
 
 instance HasPath RootApplication where

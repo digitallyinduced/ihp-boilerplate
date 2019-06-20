@@ -1,15 +1,15 @@
-module Apps.Web.Controller.Prelude
-( module Apps.Web.Types
-, module Apps.Web.Controller.Context
+module Web.Controller.Prelude
+( module Web.Types
+, module Web.Controller.Context
 , module Helper.Controller
 , module TurboHaskell.ControllerPrelude
 , module Model.Generated.Types
 )
 where
 
-import Apps.Web.Types
-import Apps.Web.Controller.Context
+import Web.Types
+import Web.Controller.Context
 import Helper.Controller
-import Apps.Web.Validation
+import Application.Validation
 import TurboHaskell.ControllerPrelude
 import Model.Generated.Types

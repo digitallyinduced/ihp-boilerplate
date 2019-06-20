@@ -1,4 +1,4 @@
-module Apps.Web.Controller.Context where
+module Web.Controller.Context where
 
 import ClassyPrelude hiding (pack)
 import TurboHaskell.Controller.Session

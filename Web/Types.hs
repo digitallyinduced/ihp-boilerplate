@@ -1,8 +1,8 @@
-module Apps.Web.Types where
-import Apps.Web.Validation
+module Web.Types where
+import Application.Validation
 
 import           ClassyPrelude
-import           Apps.Web.Controller.Context
+import           Web.Controller.Context
 import qualified TurboHaskell.Controller.Session
 import qualified TurboHaskell.ControllerSupport as ControllerSupport
 import           TurboHaskell.HaskellSupport
