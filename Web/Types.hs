@@ -7,7 +7,7 @@ import qualified TurboHaskell.Controller.Session
 import qualified TurboHaskell.ControllerSupport as ControllerSupport
 import           TurboHaskell.HaskellSupport
 import           TurboHaskell.ModelSupport
-import           Helper.Controller
+import           Application.Helper.Controller
 import qualified Network.Wai
 import TurboHaskell.ViewSupport
 import Generated.Types

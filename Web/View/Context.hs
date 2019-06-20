@@ -7,7 +7,7 @@ import TurboHaskell.ControllerSupport  (RequestContext (RequestContext))
 import qualified TurboHaskell.ControllerSupport
 import TurboHaskell.HaskellSupport
 import TurboHaskell.ModelSupport
-import Helper.Controller
+import Application.Helper.Controller
 import Generated.Types
 import qualified Network.Wai
 import Data.Dynamic
