@@ -1,5 +1,5 @@
 let
-    haskellEnv = import ./src/TurboHaskell/NixSupport/default.nix {
+    haskellEnv = import ./TurboHaskell/NixSupport/default.nix {
         compiler = "ghc844";
         haskellDeps = p: with p; [
             cabal-install

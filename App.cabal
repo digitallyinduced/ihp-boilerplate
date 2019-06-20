@@ -56,6 +56,6 @@ executable App
   	uuid,
   	time,
   	parsec
-  hs-source-dirs:      src
+  hs-source-dirs:      .
   default-language:    Haskell2010
   extensions: OverloadedStrings, NoImplicitPrelude, ImplicitParams, Rank2Types, NamedFieldPuns, TypeSynonymInstances, FlexibleInstances, DisambiguateRecordFields, DuplicateRecordFields, OverloadedLabels, FlexibleContexts, DataKinds

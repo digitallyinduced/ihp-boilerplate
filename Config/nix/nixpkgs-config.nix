@@ -29,7 +29,7 @@ let
       };
       makePackageSet = dir: pkgs.lib.mapAttrs' (toPackage dir) (builtins.readDir dir);
     in
-    (makePackageSet ./haskell-packages/.) // (makePackageSet ./../../src/TurboHaskell/NixSupport/haskell-packages/.);
+    (makePackageSet ./haskell-packages/.) // (makePackageSet ./../../TurboHaskell/NixSupport/haskell-packages/.);
 
   makeOverrides =
     function: names: haskellPackagesNew: haskellPackagesOld:
