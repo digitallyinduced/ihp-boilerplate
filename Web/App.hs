@@ -6,11 +6,11 @@ import Web.Types
 import TurboHaskell.Welcome.Controller
 
 instance HasPath WebApplication where
-	pathTo WebApplication = ""
+    pathTo WebApplication = ""
 
 instance CanRoute WebApplication () where
     parseRoute = withPrefix "/"
-	    		[ parseRoute @WelcomeController
-	    		-- Generator Marker
-		    	]
+                [ parseRoute @WelcomeController
+                -- Generator Marker
+                ]
 
