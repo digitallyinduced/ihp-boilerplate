@@ -29,7 +29,7 @@ let
       };
       makePackageSet = dir: pkgs.lib.mapAttrs' (toPackage dir) (builtins.readDir dir);
     in
-    (makePackageSet ./haskell-packages/.) // (makePackageSet ./../../TurboHaskell/NixSupport/haskell-packages/.);
+      { "turbohaskell" = ((haskellPackagesNew.callPackage ./../../TurboHaskell/turbohaskell.nix) { }); } // (makePackageSet ./haskell-packages/.) // (makePackageSet ./../../TurboHaskell/NixSupport/haskell-packages/.);
 
   makeOverrides =
     function: names: haskellPackagesNew: haskellPackagesOld:
