@@ -5,7 +5,6 @@ tmp
 result
 node_modules
 bin
-db/state
 *.iml
 Generated
 dist
@@ -13,3 +12,4 @@ dist
 *.dyn_o
 *.hi
 *.o
+build
