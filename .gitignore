@@ -13,3 +13,6 @@ dist
 *.hi
 *.o
 build
+gen
+del
+static/prod.*
