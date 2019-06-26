@@ -1,5 +1,6 @@
 module Web.App where
 import TurboHaskell.RouterPrelude
+import Generated.Types
 import Web.Types
 
 -- Controller Imports
