@@ -9,13 +9,9 @@ let
             cabal-install
             base
             classy-prelude
-            blaze-html
             wai
             text
-            postgresql-simple
-            aeson
             hlint
-            generic-lens
             turbohaskell
         ];
         otherDeps = p: with p; [
