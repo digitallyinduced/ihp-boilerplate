@@ -14,7 +14,7 @@ import Generated.Types
 import Data.Dynamic
 import Data.Data
 
-data WebApplication = WebApplication deriving (Eq, Show, Generic)
+data WebApplication = WebApplication deriving (Eq, Show)
 
 data ViewContext = ViewContext
     { requestContext :: ControllerSupport.RequestContext
