@@ -11,7 +11,9 @@ import Web.FrontController
 
 instance FrontController RootApplication where
     prefix = ""
-    controllers = controllers @WebApplication
+    controllers =
+        [ mountFrontController @WebApplication
+        ]
 
 main :: IO ()
 main = TurboHaskell.Server.run
