@@ -8,9 +8,7 @@ import TurboHaskell.FrameworkConfig
 
 instance FrontController RootApplication where
     prefix = ""
-    controllers =
-        [
-        ]
+    controllers = []
 
 main :: IO ()
 main = TurboHaskell.Server.run
