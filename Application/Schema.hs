@@ -1,7 +1,7 @@
 module Model.Schema where
 import TurboHaskell.SchemaPrelude
 
-database = [
+database = schema [
     -- Here you can add your database schema
     --
     -- table "hello_worlds"
