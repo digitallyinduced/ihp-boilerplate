@@ -15,8 +15,8 @@ let
 
   dontHaddockPackages = [];
 
-  nixPkgsRev = "dfd8f84aef129f1978e446b5d45ef05cd4421821";
-  nixPkgsSha256 = "0av0q7xyv76jq2csbg10x8gcnlnadlppvlx616s7qz7jahkmymrl";
+  nixPkgsRev = "b6ef10f6a81d1653b27bd8cff0593b55a7081106";
+  nixPkgsSha256 = "1dvqrhp0c85n7n9n79gv3hkyw6i32gwhpqgdyxkaqzf13ckmdrjm";
 
   compiler = "ghc865";
 
@@ -47,7 +47,7 @@ let
   # More exotic overrides go here
   manualOverrides = haskellPackagesNew: haskellPackagesOld: {
     turbohaskell = pkgs.haskell.lib.doJailbreak (pkgs.haskell.lib.allowInconsistentDependencies haskellPackagesOld.turbohaskell);
-    time_1_9_2 = pkgs.haskell.lib.dontCheck haskellPackagesOld.time_1_9_2;
+    time_1_9_3 = pkgs.haskell.lib.dontCheck haskellPackagesOld.time_1_9_3;
   };
 
   #mkDerivation = args: super.mkDerivation (args // {
