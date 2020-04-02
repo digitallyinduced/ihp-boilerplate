@@ -5,6 +5,7 @@ let
     "generic-lens"
     "filesystem-conduit"
     "tz"
+    "typerep-map"
   ];
 
   doJailbreakPackages = [
