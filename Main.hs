@@ -7,7 +7,6 @@ import TurboHaskell.RouterSupport
 import TurboHaskell.FrameworkConfig
 
 instance FrontController RootApplication where
-    prefix = ""
     controllers = []
 
 main :: IO ()

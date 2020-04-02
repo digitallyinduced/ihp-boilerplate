@@ -1,4 +1,4 @@
-module Model.Schema where
+module Application.Schema where
 import TurboHaskell.SchemaPrelude
 
 database = schema [
