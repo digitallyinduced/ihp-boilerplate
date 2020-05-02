@@ -1,5 +1,5 @@
 module Main where
-import ClassyPrelude
+import TurboHaskell.Prelude
 
 import Config
 import qualified TurboHaskell.Server

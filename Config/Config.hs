@@ -1,6 +1,6 @@
 module Config where
 
-import ClassyPrelude
+import TurboHaskell.Prelude
 import TurboHaskell.Environment
 import TurboHaskell.FrameworkConfig
 

@@ -8,7 +8,6 @@ let
         haskellDeps = p: with p; [
             cabal-install
             base
-            classy-prelude
             wai
             text
             hlint
