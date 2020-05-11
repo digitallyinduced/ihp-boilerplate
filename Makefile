@@ -12,4 +12,10 @@ JS_FILES += TurboHaskell/TurboHaskell/static/vendor/turbolinks.js
 JS_FILES += TurboHaskell/TurboHaskell/static/vendor/turbolinksInstantClick.js
 JS_FILES += TurboHaskell/TurboHaskell/static/vendor/turbolinksMorphdom.js
 
-include TurboHaskell/Makefile.dist
+ifneq ($(wildcard TurboHaskell/.*),)
+TURBOHASKELL = TurboHaskell
+else
+TURBOHASKELL = $(shell dirname $$(which RunDevServer))/..
+endif
+
+include ${TURBOHASKELL}/Makefile.dist
