@@ -1,7 +1,7 @@
 #!/bin/bash -e
 # Script to start the local dev server
 
-#use cachix binary cache
+# Use cachix binary cache
 cachix authtoken eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1JDU4MDAiLCJqdGkiOiI2ODI2MzM3Ny04ZjA0LTQzNjQtOTc5Zi0yMTdkNDg2MGFjODciLCJzY29wZXMiOiJ0eCJ9.nb37o2CQBt1Fz3MBMppNACdaWDQsjbPvYpPMLgeJ7RI
 cachix use digitallyinduced
 
