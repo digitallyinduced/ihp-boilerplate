@@ -15,10 +15,10 @@ let
 
   dontHaddockPackages = [];
 
-  nixPkgsRev = "b6ef10f6a81d1653b27bd8cff0593b55a7081106";
-  nixPkgsSha256 = "1dvqrhp0c85n7n9n79gv3hkyw6i32gwhpqgdyxkaqzf13ckmdrjm";
+  nixPkgsRev = "da7ddd822e32aeebea00e97ab5aeca9758250a40";
+  nixPkgsSha256 = "0zbxbk4m72psbvd5p4qprcpiadndq1j2v517synijwp2vxc7cnv6";
 
-  compiler = "ghc865";
+  compiler = "ghc883";
 
   generatedOverrides = haskellPackagesNew: haskellPackagesOld:
     let
