@@ -11,6 +11,7 @@ let
   doJailbreakPackages = [
     "ghc-mod"
     "filesystem-conduit"
+    "http-media"
   ];
 
   dontHaddockPackages = [];
