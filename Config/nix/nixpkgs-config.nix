@@ -1,3 +1,5 @@
+{ turboHaskell }:
+
 let
   dontCheckPackages = [
     "ghc-mod"
@@ -30,7 +32,7 @@ let
       };
       makePackageSet = dir: pkgs.lib.mapAttrs' (toPackage dir) (builtins.readDir dir);
     in
-      { "turbohaskell" = ((haskellPackagesNew.callPackage ./../../TurboHaskell/turbohaskell.nix) { }); } // (makePackageSet ./haskell-packages/.) // (makePackageSet ./../../TurboHaskell/NixSupport/haskell-packages/.);
+      { "turbohaskell" = ((haskellPackagesNew.callPackage "${turboHaskell}/turbohaskell.nix") { }); } // (makePackageSet ./haskell-packages/.) // (makePackageSet "${turboHaskell}/NixSupport/haskell-packages/.");
 
   makeOverrides =
     function: names: haskellPackagesNew: haskellPackagesOld:
