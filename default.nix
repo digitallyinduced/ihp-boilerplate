@@ -1,7 +1,7 @@
 let
     turboHaskell = builtins.fetchGit {
         url = "https://github.com/digitallyinduced/haskellframework.git";
-        rev = "ac429aa0eb9a5b3f676de5c91722c06c00ce94a1";
+        rev = "468072780b38c26582a3b53b7b0a747380dda554";
     };
     haskellEnv = import "${turboHaskell}/NixSupport/default.nix" {
         compiler = "ghc883";
