@@ -1,10 +1,10 @@
 module Application.Script.Prelude
-( module TurboHaskell.ControllerPrelude
+( module IHP.ControllerPrelude
 , module Generated.Types
-, module TurboHaskell.Prelude
+, module IHP.Prelude
 )
 where
 
-import TurboHaskell.Prelude
-import TurboHaskell.ControllerPrelude
+import IHP.Prelude
+import IHP.ControllerPrelude
 import Generated.Types

@@ -1,8 +1,8 @@
 module Config where
 
-import TurboHaskell.Prelude
-import TurboHaskell.Environment
-import TurboHaskell.FrameworkConfig
+import IHP.Prelude
+import IHP.Environment
+import IHP.FrameworkConfig
 
 instance FrameworkConfig where 
     environment = Development
