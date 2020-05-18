@@ -1,4 +1,4 @@
-{ turboHaskell }:
+{ ihp }:
 
 let
   dontCheckPackages = [
@@ -32,7 +32,7 @@ let
       };
       makePackageSet = dir: pkgs.lib.mapAttrs' (toPackage dir) (builtins.readDir dir);
     in
-      { "turbohaskell" = ((haskellPackagesNew.callPackage "${turboHaskell}/turbohaskell.nix") { }); } // (makePackageSet ./haskell-packages/.) // (makePackageSet "${turboHaskell}/NixSupport/haskell-packages/.");
+      { "turbohaskell" = ((haskellPackagesNew.callPackage "${ihp}/turbohaskell.nix") { }); } // (makePackageSet ./haskell-packages/.) // (makePackageSet "${ihp}/NixSupport/haskell-packages/.");
 
   makeOverrides =
     function: names: haskellPackagesNew: haskellPackagesOld:
