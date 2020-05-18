@@ -32,7 +32,7 @@ let
       };
       makePackageSet = dir: pkgs.lib.mapAttrs' (toPackage dir) (builtins.readDir dir);
     in
-      { "turbohaskell" = ((haskellPackagesNew.callPackage "${ihp}/turbohaskell.nix") { }); } // (makePackageSet ./haskell-packages/.) // (makePackageSet "${ihp}/NixSupport/haskell-packages/.");
+      { "ihp" = ((haskellPackagesNew.callPackage "${ihp}/ihp.nix") { }); } // (makePackageSet ./haskell-packages/.) // (makePackageSet "${ihp}/NixSupport/haskell-packages/.");
 
   makeOverrides =
     function: names: haskellPackagesNew: haskellPackagesOld:
@@ -49,7 +49,7 @@ let
 
   # More exotic overrides go here
   manualOverrides = haskellPackagesNew: haskellPackagesOld: {
-    turbohaskell = pkgs.haskell.lib.allowInconsistentDependencies haskellPackagesOld.turbohaskell;
+    ihp = pkgs.haskell.lib.allowInconsistentDependencies haskellPackagesOld.ihp;
     time_1_9_3 = pkgs.haskell.lib.dontCheck haskellPackagesOld.time_1_9_3;
   };
 
