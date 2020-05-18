@@ -1,10 +1,10 @@
 let
-    turboHaskell = builtins.fetchGit {
+    ihp = builtins.fetchGit {
         url = "https://github.com/digitallyinduced/haskellframework.git";
         rev = "468072780b38c26582a3b53b7b0a747380dda554";
     };
-    haskellEnv = import "${turboHaskell}/NixSupport/default.nix" {
-        turboHaskell = turboHaskell;
+    haskellEnv = import "${ihp}/NixSupport/default.nix" {
+        ihp = ihp;
         compiler = "ghc883";
         haskellDeps = p: with p; [
             cabal-install
