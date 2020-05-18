@@ -12,7 +12,7 @@ let
             wai
             text
             hlint
-            turbohaskell
+            ihp
         ];
         otherDeps = p: with p; [
             # Native dependencies, e.g. imagemagick
