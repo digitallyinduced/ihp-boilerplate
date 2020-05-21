@@ -12,7 +12,7 @@ let
             wai
             text
             hlint
-            ihp
+            p.ihp
         ];
         otherDeps = p: with p; [
             # Native dependencies, e.g. imagemagick
