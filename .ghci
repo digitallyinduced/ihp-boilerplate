@@ -1,3 +1,3 @@
 import Prelude
 :def source readFile
-:source IHP/IHP/IDE/applicationGhciConfig
+:source build/ihp-lib/applicationGhciConfig
