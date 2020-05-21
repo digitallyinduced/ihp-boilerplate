@@ -13,9 +13,9 @@ JS_FILES += IHP/IHP/static/vendor/turbolinksInstantClick.js
 JS_FILES += IHP/IHP/static/vendor/turbolinksMorphdom.js
 
 ifneq ($(wildcard IHP/.*),)
-TURBOHASKELL = IHP
+IHP = IHP
 else
-TURBOHASKELL = $(shell dirname $$(which RunDevServer))/..
+IHP = $(shell dirname $$(which RunDevServer))/../lib/IHP
 endif
 
-include ${TURBOHASKELL}/Makefile.dist
+include ${IHP}/Makefile.dist

@@ -5,7 +5,6 @@ let
     };
     haskellEnv = import "${ihp}/NixSupport/default.nix" {
         ihp = ihp;
-        compiler = "ghc883";
         haskellDeps = p: with p; [
             cabal-install
             base
