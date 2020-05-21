@@ -6,4 +6,4 @@ import IHP.FrameworkConfig
 
 instance FrameworkConfig where 
     environment = Development
-    baseUrl = "http://localhost:8000"
+    appHostname = "localhost"
