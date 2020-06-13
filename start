@@ -1,5 +1,7 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 # Script to start the local dev server
+
+set -e
 
 # Unless the RunDevServer binary is available, we rebuild the .envrc cache with nix-shell
 # and config cachix for using our binary cache
