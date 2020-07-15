@@ -6,7 +6,7 @@ set -e
 # Unless the RunDevServer binary is available, we rebuild the .envrc cache with nix-shell
 # and config cachix for using our binary cache
 command -v RunDevServer >/dev/null 2>&1 \
-    || { echo "PATH_add $(nix-shell -j auto --cores 0 --run 'echo $PATH')" > .envrc; }
+    || { echo "PATH_add $(nix-shell -j auto --cores 0 --run 'printf %q $PATH')" > .envrc; }
 
 # Now we have to load the PATH variable from the .envrc cache
 direnv allow
