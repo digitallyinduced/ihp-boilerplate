@@ -3,15 +3,24 @@
 
 set -e
 
-# Unless the RunDevServer binary is available, we rebuild the .envrc cache with nix-shell
-# and config cachix for using our binary cache
-command -v RunDevServer >/dev/null 2>&1 \
-    || { echo "PATH_add $(nix-shell -j auto --cores 0 --run 'printf %q $PATH')" > .envrc; }
+# Check if we have a cached version of RunDevServer, and run lorri if not
+if ! lorri shell --cached
+then
+    lorri watch --once
+fi
 
 # Now we have to load the PATH variable from the .envrc cache
 direnv allow
 eval "$(direnv hook bash)"
 eval "$(direnv export bash)"
 
-# Finally start the dev server
+# We start lorri to automatically update the dev environment
+# NB: Only run lorri watch if the lorri daemon isn't active
+if ! pgrep -f "lorri daemon"
+then
+    lorri watch &
+    trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+fi
+
+# We start the dev server that we have in our environment
 RunDevServer
