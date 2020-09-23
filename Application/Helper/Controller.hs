@@ -4,6 +4,6 @@ module Application.Helper.Controller (
 ) where
 
 -- Here you can add functions which are available in all your controllers
-
+import IHP.ControllerPrelude
 -- To use the built in login:
 -- import IHP.LoginSupport.Helper.Controller
