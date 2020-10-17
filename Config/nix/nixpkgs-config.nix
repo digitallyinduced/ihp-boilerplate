@@ -2,24 +2,28 @@
 
 let
   dontCheckPackages = [
-    "ghc-mod"
     "cabal-helper"
     "generic-lens"
     "filesystem-conduit"
     "tz"
     "typerep-map"
+    "trifecta"
+    "hackage-security"
   ];
 
   doJailbreakPackages = [
-    "ghc-mod"
     "filesystem-conduit"
     "http-media"
+    "aeson"
+    "wreq"
+    "ghcide"
+    "brittany"
   ];
 
   dontHaddockPackages = [];
 
-  nixPkgsRev = "07e5844fdf6fe99f41229d7392ce81cfe191bcfc";
-  nixPkgsSha256 = "0p2z6jidm4rlp2yjfl553q234swj1vxl8z0z8ra1hm61lfrlcmb9";
+  nixPkgsRev = "c985bf793e6ab7d54a9182381b4b610fe0ae6936";
+  nixPkgsSha256 = "0zsj9imjbnhkb65r169xxqmjgqd5593insrvncvabg1iqdsrcxz1";
 
   compiler = "ghc883";
 
@@ -47,10 +51,17 @@ let
 
   composeExtensionsList = pkgs.lib.fold pkgs.lib.composeExtensions (_: _: {});
 
+
   # More exotic overrides go here
   manualOverrides = haskellPackagesNew: haskellPackagesOld: {
-    ihp = pkgs.haskell.lib.allowInconsistentDependencies haskellPackagesOld.ihp;
-    time_1_9_3 = pkgs.haskell.lib.dontCheck haskellPackagesOld.time_1_9_3;
+    haskell-language-server = haskellPackagesOld.haskell-language-server.overrideScope ( self: super: { aeson = pkgs.haskell.lib.dontCheck haskellPackagesNew.aeson_1_5_2_0; } );
+    hls-plugin-api = haskellPackagesOld.hls-plugin-api.overrideScope ( self: super: { aeson = pkgs.haskell.lib.dontCheck haskellPackagesNew.aeson_1_5_2_0; } );
+    yaml = haskellPackagesOld.yaml.overrideScope ( self: super: { aeson = pkgs.haskell.lib.dontCheck haskellPackagesNew.aeson_1_5_2_0; } );
+    lsp-test = haskellPackagesOld.lsp-test.overrideScope ( self: super: { aeson = pkgs.haskell.lib.dontCheck haskellPackagesNew.aeson_1_5_2_0; } );
+    haskell-lsp-types = haskellPackagesOld.haskell-lsp-types.overrideScope ( self: super: { aeson = pkgs.haskell.lib.dontCheck haskellPackagesNew.aeson_1_5_2_0; } );
+    haskell-lsp = haskellPackagesOld.haskell-lsp.overrideScope ( self: super: { aeson = pkgs.haskell.lib.dontCheck haskellPackagesNew.aeson_1_5_2_0; } );
+    aeson-pretty = haskellPackagesOld.aeson-pretty.overrideScope ( self: super: { aeson = pkgs.haskell.lib.dontCheck haskellPackagesNew.aeson_1_5_2_0; } );
+    aeson = pkgs.haskell.lib.dontCheck haskellPackagesOld.aeson_1_5_2_0;
   };
 
   #mkDerivation = args: super.mkDerivation (args // {
