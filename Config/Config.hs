@@ -3,7 +3,9 @@ module Config where
 import IHP.Prelude
 import IHP.Environment
 import IHP.FrameworkConfig
+import IHP.Mail
 
-instance FrameworkConfig where 
-    environment = Development
-    appHostname = "localhost"
+config :: ConfigBuilder
+config = do
+    option Development
+    option $ AppHostname "localhost"
