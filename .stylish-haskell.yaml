@@ -229,3 +229,20 @@ language_extensions:
   - TemplateHaskell
   - QuasiQuotes
   - TypeApplications
+  - TypeSynonymInstances
+  - OverloadedLabels
+  - DataKinds
+  - DuplicateRecordFields
+  - FlexibleContexts
+  - FlexibleInstances
+  - RecordWildCards
+  - MultiParamTypeClasses
+  - LambdaCase
+  - BlockArguments
+  - TypeFamilies
+  - ConstraintKinds
+  - FlexibleInstances
+  - InstanceSigs
+  - StandaloneDeriving
+  - TypeOperators
+  - UndecidableInstances
