@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+nix-shell -j auto --cores 0 --run 'make -B .envrc'
