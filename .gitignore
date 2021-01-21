@@ -17,3 +17,6 @@ gen
 del
 static/prod.*
 Config/client_session_key.aes
+.cache
+elm-stuff
+static/elm

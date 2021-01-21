@@ -1,0 +1,30 @@
+{
+  "name": "ihp-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run-dev-elm": "parcel watch elm/index.js --out-dir static/elm",
+    "start": "echo Use IHP\\'s ./start script instead. && exit 1",
+    "build": "parcel build elm/index.js --out-dir static/elm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digitallyinduced/ihp-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/digitallyinduced/ihp-boilerplate/issues"
+  },
+  "homepage": "https://github.com/digitallyinduced/ihp-boilerplate#readme",
+  "dependencies": {
+    "node-elm-compiler": "^5.0.5",
+    "parcel-bundler": "^1.12.4"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "elm-hot": "^1.1.5"
+  }
+}
