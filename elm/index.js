@@ -19,7 +19,7 @@ function getFlags(data) {
 }
 
 // Initialize Elm on page load
-window.addEventListener('load', (event) => {
+window.addEventListener("load", (event) => {
   initializeWidgets();
 });
 
