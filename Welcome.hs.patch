@@ -1,6 +1,6 @@
 --- Web/View/Static/Welcome.hs
 +++ Web/View/Static/Welcome.hs
-@@ -15,6 +15,10 @@ instance View WelcomeView where
+@@ -15,6 +15,8 @@ instance View WelcomeView where
                        It's working!
                    </h2>
 
