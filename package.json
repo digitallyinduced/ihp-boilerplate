@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "watch": "spago build --purs-args \"--output static/halogen/output\" --watch --source-maps --then \"npm run bundle\"",
-    "build": "spago bundle-app --main Main --to static/halogen/index.js --purs-args \"--output static/halogen/output\"",
+    "watch": "spago build --purs-args \"--output static/halogen/output\" --source-maps --then \"npm run bundle\" --watch",
+    "build": "spago build --purs-args \"--output static/halogen/output\" --source-maps --then \"npm run bundle\"",
     "bundle": "esbuild static/halogen/main.js --bundle --outfile=static/halogen/index.js --minify --sourcemap"
   },
   "devDependencies": {
