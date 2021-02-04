@@ -1,0 +1,10 @@
+--- Web/View/Layout.hs
++++ Web/View/Layout.hs
+@@ -45,6 +45,7 @@ scripts = [hsx|
+         <script src="/helpers.js"></script>
+         <script src="/vendor/morphdom-umd.min.js"></script>
+         <script src="/ihp-auto-refresh.js"></script>
++        <script src="/halogen/index.js"></script>
+     |]
+
+ metaTags :: Html

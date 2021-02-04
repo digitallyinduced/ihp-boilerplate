@@ -1,0 +1,8 @@
+{
+  // List of recommended extensions which should be enabled for this workspace.
+  "recommendations": [
+    "mvakula.vscode-purty"
+    "nwolverson.ide-purescript",
+    "nwolverson.language-purescript",
+  ]
+}
