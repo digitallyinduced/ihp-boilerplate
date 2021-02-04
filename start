@@ -14,4 +14,4 @@ eval "$(direnv hook bash)"
 eval "$(direnv export bash)"
 
 # Finally start the dev server
-npx concurrently --raw "RunDevServer" "npm run build:dev"
+npx concurrently --raw "RunDevServer" "npm run watch"

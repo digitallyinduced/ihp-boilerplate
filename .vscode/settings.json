@@ -1,0 +1,3 @@
+{
+  "purescript.outputDirectory": "static/halogen/output/"
+}

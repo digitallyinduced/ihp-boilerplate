@@ -4,9 +4,7 @@
                        It's working!
                    </h2>
 
-+                  <div class="halogen">
-+                      <h2>PureScript + Halogen is not working... :(</h2>
-+                  </div>
++                  <div id="halogen"></div>
 +
                    <p style="margin-top: 1rem; font-size: 1.75rem; font-weight: 600; color:hsla(196, 13%, 80%, 1)">
                       Your new application is up and running.

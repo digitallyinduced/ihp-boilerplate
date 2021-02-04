@@ -1,11 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "watch": "spago bundle-app --watch --source-maps --to static/halogen/index.js",
-    "build": "spago bundle-app --to static/halogen/index.js"
+    "watch": "spago build --purs-args \"--output static/halogen/output\" --watch --source-maps --then \"npm run bundle\"",
+    "build": "spago bundle-app --main Main --to static/halogen/index.js --purs-args \"--output static/halogen/output\"",
+    "bundle": "esbuild static/halogen/main.js --bundle --outfile=static/halogen/index.js --minify --sourcemap"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
+    "esbuild": "^0.8.41",
     "parcel": "^1.12.4",
     "purescript": "^0.13.8",
     "spago": "^0.19.0"

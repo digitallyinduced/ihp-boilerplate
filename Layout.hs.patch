@@ -4,7 +4,7 @@
          <script src="/helpers.js"></script>
          <script src="/vendor/morphdom-umd.min.js"></script>
          <script src="/ihp-auto-refresh.js"></script>
-+        <script src="/halogen/index.js"></script>
++        <script src="/halogen/index.js" defer></script>
      |]
 
  metaTags :: Html
