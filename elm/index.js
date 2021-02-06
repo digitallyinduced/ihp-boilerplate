@@ -9,11 +9,11 @@ function initializeWidgets() {
       node,
       flags: getFlags(node.dataset.flags),
     });
-    // Initialize ports below this line
+    // Initialize ports below this comment
   });
 }
 
-// Parse the JSON from IHP or just pass null if there is no flags data
+// Parses the JSON from IHP or just passes null if there is no flags data
 function getFlags(data) {
   return data ? JSON.parse(data) : null;
 }
