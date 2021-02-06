@@ -1,7 +1,7 @@
 "use strict";
 import { Elm } from "./Main.elm";
 
-// Run Elm on all elm Nodes
+// Runs Elm on all elm Nodes in the DOM
 function initializeWidgets() {
   const elmNodes = document.querySelectorAll(".elm");
   elmNodes.forEach((node) => {
@@ -9,21 +9,21 @@ function initializeWidgets() {
       node,
       flags: getFlags(node.dataset.flags),
     });
-    // Initialize ports below this comment
+    // Write ports below this comment
   });
 }
 
-// Parses the JSON from IHP or just passes null if there is no flags data
+// Parses the JSON from IHP
 function getFlags(data) {
   return data ? JSON.parse(data) : null;
 }
 
-// Initialize Elm on page load
+// Initializes Elm on page load
 window.addEventListener("load", (event) => {
   initializeWidgets();
 });
 
-// Initialize Elm on Turbolinks transition
+// Initializes Elm on Turbolinks transition
 document.addEventListener("turbolinks:load", (e) => {
   initializeWidgets();
 });
