@@ -1,11 +1,7 @@
 import { main } from "./output/Main/index.js";
 
-// Initialize PureScript on page load
-window.addEventListener("load", () => {
+document.addEventListener("ihp:load", () => {
+  if (window.PureScriptInitialized) return;
   main();
-});
-
-// Initialize PureScript on Turbolinks transition
-document.addEventListener("turbolinks:load", () => {
-  main();
+  window.PureScriptInitialized = true;
 });
