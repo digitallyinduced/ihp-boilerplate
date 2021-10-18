@@ -18,5 +18,5 @@ del
 static/prod.*
 Config/client_session_key.aes
 
-# Ignore IHP lib.
+# Ignore locally checked out IHP version
 IHP
