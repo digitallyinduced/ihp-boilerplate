@@ -17,3 +17,6 @@ gen
 del
 static/prod.*
 Config/client_session_key.aes
+
+# Ignore IHP lib.
+IHP
