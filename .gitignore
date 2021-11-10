@@ -30,3 +30,7 @@ result
 static/halogen/index.*
 static/prod.*
 tmp
+Config/client_session_key.aes
+
+# Ignore locally checked out IHP version
+IHP
