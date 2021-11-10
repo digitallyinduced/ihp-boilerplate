@@ -20,3 +20,5 @@ Config/client_session_key.aes
 .cache
 elm-stuff
 static/elm
+# Ignore locally checked out IHP version
+IHP
