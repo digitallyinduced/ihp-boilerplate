@@ -1,7 +1,15 @@
 ifneq ($(wildcard IHP/.*),)
 IHP = IHP/lib/IHP
 else
+ifneq ($(wildcard build/ihp-lib),)
+IHP = build/ihp-lib
+else
+ifneq ($(shell which RunDevServer),)
 IHP = $(shell dirname $$(which RunDevServer))/../lib/IHP
+else
+IHP = $(error IHP not found! Run the following command to fix this:    nix-shell --run 'make .envrc'    )
+endif
+endif
 endif
 
 CSS_FILES += ${IHP}/static/vendor/bootstrap.min.css
