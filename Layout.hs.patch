@@ -1,10 +1,10 @@
---- Web/View/Layout.hs	2021-01-21 11:34:10.964224978 +0100
-+++ Layout.hs	2021-01-21 11:33:31.288985804 +0100
-@@ -45,6 +45,7 @@
-         <script src="/helpers.js"></script>
-         <script src="/vendor/morphdom-umd.min.js"></script>
-         <script src="/ihp-auto-refresh.js"></script>
-+        <script src="/elm/index.js"></script>
+--- Web/View/Layout.hs   2022-01-15 10:05:24.712496967 +0100
++++ Layout.hs  2022-01-15 10:06:30.321569568 +0100
+@@ -54,6 +54,7 @@
+         <script src={assetPath "/helpers.js"}></script>
+         <script src={assetPath "/ihp-auto-refresh.js"}></script>
+         <script src={assetPath "/app.js"}></script>
++        <script src={assetPath "/elm/index.js"}></script>
      |]
- 
- metaTags :: Html
+
+ devScripts :: Html
