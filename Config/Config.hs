@@ -6,5 +6,6 @@ import IHP.FrameworkConfig
 
 config :: ConfigBuilder
 config = do
-    option Development
-    option (AppHostname "localhost")
+    -- See https://ihp.digitallyinduced.com/Guide/config.html
+    -- for what you can do here
+    pure ()
