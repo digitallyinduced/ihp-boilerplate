@@ -9,6 +9,8 @@
 .purs*
 !.purs-repl
 .spago
+dist
+dist-newstyle
 *.dyn_hi
 *.dyn_o
 *.hi
@@ -19,7 +21,6 @@ bower_components
 build
 Config/client_session_key.aes
 del
-dist
 gen
 Generated
 generated-docs
