@@ -9,7 +9,7 @@
   packages = [ ];
 
   ihp.enable = true;
-  # ihp.projectPath = ./.;
+  ihp.projectPath = ./.;
 
   # See full reference at https://devenv.sh/reference/options/
 }

@@ -72,33 +72,33 @@
     "ihp": {
       "flake": false,
       "locked": {
-        "lastModified": 1682101432,
-        "narHash": "sha256-BQIpCHdPkiOMabv79/dY0dWttTv6sALmor0vmw4z8bE=",
-        "owner": "pauldub",
+        "lastModified": 1682767030,
+        "narHash": "sha256-YuOEcKBzDAzn+La8Hp6Uhxv6RWojE5wY66zw1oqH6RU=",
+        "owner": "digitallyinduced",
         "repo": "ihp",
-        "rev": "328ba9c8dc5cf3ea64ac6c81bca853beaded2ea0",
+        "rev": "abb513016b372f9f76b6c95caed66def536a885a",
         "type": "github"
       },
       "original": {
-        "owner": "pauldub",
-        "ref": "feat-devenv-support",
+        "owner": "digitallyinduced",
+        "ref": "abb513016b372f9f76b6c95caed66def536a885a",
         "repo": "ihp",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1682109806,
-        "narHash": "sha256-d9g7RKNShMLboTWwukM+RObDWWpHKaqTYXB48clBWXI=",
+        "lastModified": 1681488673,
+        "narHash": "sha256-PmojOyePBNvbY3snYE7NAQHTLB53t7Ro+pgiJ4wPCuk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2362848adf8def2866fabbffc50462e929d7fffb",
+        "rev": "a95ed9fe764c3ba2bf2d2fa223012c379cd6b32e",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
+        "rev": "a95ed9fe764c3ba2bf2d2fa223012c379cd6b32e",
         "type": "github"
       }
     },
