@@ -1,15 +1,28 @@
 { pkgs, inputs, config, ... }:
 
 {
-  imports = [
-    "${inputs.ihp}/NixSupport/devenv.nix"
-  ];
+    # See full reference at https://devenv.sh/reference/options/
+    # For IHP specific options, see https://ihp.digitallyinduced.com/Guide/package-management.html
 
-  # https://devenv.sh/packages/
-  packages = [ ];
+    imports = [
+        "${inputs.ihp}/NixSupport/devenv.nix"
+    ];
 
-  ihp.enable = true;
-  ihp.projectPath = ./.;
+    # https://devenv.sh/packages/
+    packages = with pkgs; [
+        # Native dependencies, e.g. imagemagick
+    ];
 
-  # See full reference at https://devenv.sh/reference/options/
+    ihp.enable = true;
+    ihp.projectPath = ./.;
+
+    ihp.haskellPackages = p: with p; [
+        # Haskell dependencies go here
+        cabal-install
+        base
+        wai
+        text
+        hlint
+        ihp
+    ];
 }
