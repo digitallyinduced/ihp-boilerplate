@@ -11,7 +11,7 @@
 
     outputs = { self, nixpkgs, devenv, systems, ihp, ... } @ inputs:
         let
-            devenvConfig = { pkgs, inputs, config, ... }: {
+            devenvConfig = { pkgs, ... }: {
                 # See full reference at https://devenv.sh/reference/options/
                 # For IHP specific options, see https://ihp.digitallyinduced.com/Guide/package-management.html
 
@@ -37,8 +37,8 @@
             
             releaseEnv = pkgs: import "${ihp}/NixSupport/default.nix" {
                 ihp = ihp;
-                haskellDeps = (devenvConfig inputs).ihp.haskellPackages;
-                otherDeps = p: (devenvConfig inputs).packages;
+                haskellDeps = (devenvConfig pkgs).ihp.haskellPackages;
+                otherDeps = p: (devenvConfig pkgs).packages;
                 projectPath = ./.;
                 includeDevTools = false;
                 optimized = false;
