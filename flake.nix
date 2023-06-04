@@ -54,4 +54,9 @@
                 });
                 packages = forEachSystem (system: { default = releaseEnv nixpkgs.legacyPackages.${system}; });
             };
+    
+    nixConfig = {
+        extra-substituters = "https://digitallyinduced.cachix.org";
+        extra-trusted-public-keys = "digitallyinduced.cachix.org-1:y+wQvrnxQ+PdEsCt91rmvv39qRCYzEgGQaldK26hCKE=";
+    };
 }
