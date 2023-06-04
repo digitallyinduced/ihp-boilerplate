@@ -5,17 +5,8 @@ let
     };
     haskellEnv = import "${ihp}/NixSupport/default.nix" {
         ihp = ihp;
-        haskellDeps = p: with p; [
-            cabal-install
-            base
-            wai
-            text
-            hlint
-            p.ihp
-        ];
-        otherDeps = p: with p; [
-            # Native dependencies, e.g. imagemagick
-        ];
+        haskellDeps = (import ./devenv.nix { pkgs = {}; inputs = {}; config = {}; }).ihp.haskellPackages;
+        otherDeps = pkgs: (import ./devenv.nix { inherit pkgs; inputs = {}; config = {}; }).packages;
         projectPath = ./.;
     };
 in
