@@ -63,6 +63,7 @@
                 });
                 # Binaries for deploying IHP apps. These are used by `nix build --impure`
                 defaultPackage = forEachSystem (system: releaseEnv nixpkgs.legacyPackages.${system});
+                # NixOS configurations goes here
             };
     
     # The following is needed to use the IHP binary cache.
