@@ -2,7 +2,7 @@
     inputs = {
         # Here you can adjust the IHP version of your project
         # You can find new releases at https://github.com/digitallyinduced/ihp/releases
-        ihp.url = "github:digitallyinduced/ihp?ref=abb513016b372f9f76b6c95caed66def536a885a";
+        ihp.url = "github:digitallyinduced/ihp?ref=80373b24fca3bdb03c0f5da6075cc84520938f8f";
         ihp.flake = false;
 
         # See https://ihp.digitallyinduced.com/Guide/package-management.html#nixpkgs-pinning
