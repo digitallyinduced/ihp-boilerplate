@@ -1,6 +1,6 @@
 .DS_Store
-.envrc
 .idea
+.env
 tmp
 result
 node_modules

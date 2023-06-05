@@ -1,22 +1,9 @@
-let
-    ihp = builtins.fetchGit {
-        url = "https://github.com/digitallyinduced/ihp.git";
-        ref = "refs/tags/v1.0.1";
-    };
-    haskellEnv = import "${ihp}/NixSupport/default.nix" {
-        ihp = ihp;
-        haskellDeps = p: with p; [
-            cabal-install
-            base
-            wai
-            text
-            hlint
-            p.ihp
-        ];
-        otherDeps = p: with p; [
-            # Native dependencies, e.g. imagemagick
-        ];
-        projectPath = ./.;
-    };
-in
-    haskellEnv
+# For backwards compatibility using flake.nix
+(import
+    (
+        fetchTarball {
+            url = "https://github.com/edolstra/flake-compat/archive/12c64ca55c1014cdc1b16ed5a804aa8576601ff2.tar.gz";
+            sha256 = "0jm6nzb83wa6ai17ly9fzpqc40wg1viib8klq8lby54agpl213w5";
+        }
+    )
+{ src = ./.; }).defaultNix
