@@ -8,11 +8,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1685996198,
-        "narHash": "sha256-MN05XjT2rJZs8FTdZMwNWps8l4hcbEqtKnRuaLLTVkU=",
+        "lastModified": 1686161729,
+        "narHash": "sha256-PrKWK7xf01qRvxfJhxyHF3cC3ulqDzBtr+Ja+mIsEXc=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "92ae3568a0f463e6c7334e54a21a3b7e4ffb014e",
+        "rev": "5200404ac8d501bde360cfeae7d8bd020a44755c",
         "type": "github"
       },
       "original": {
@@ -37,6 +37,24 @@
         "type": "github"
       }
     },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
+      "locked": {
+        "lastModified": 1685662779,
+        "narHash": "sha256-cKDDciXGpMEjP1n6HlzKinN0H+oLmNpgeCTzYnsA2po=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "71fb97f0d875fd4de4994dfb849f2c75e17eb6c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1667395993,
@@ -55,6 +73,7 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
+          "ihp",
           "devenv",
           "pre-commit-hooks",
           "nixpkgs"
@@ -75,20 +94,21 @@
       }
     },
     "ihp": {
-      "flake": false,
+      "inputs": {
+        "devenv": "devenv",
+        "flake-parts": "flake-parts",
+        "nixpkgs": "nixpkgs_2",
+        "systems": "systems"
+      },
       "locked": {
-        "lastModified": 1685976408,
-        "narHash": "sha256-fd50hIlpWIr9ybRUodGaDxDJNQX2+MGdbqiwBv5l9G0=",
-        "owner": "digitallyinduced",
-        "repo": "ihp",
-        "rev": "80373b24fca3bdb03c0f5da6075cc84520938f8f",
-        "type": "github"
+        "lastModified": 1686139629,
+        "narHash": "sha256-beOM3RoPjYLYeU8ObOd8LWfTfo8Sns8lsLGgoqT5ZBg=",
+        "type": "git",
+        "url": "file:///home/eisfunke/repos/work/ihp"
       },
       "original": {
-        "owner": "digitallyinduced",
-        "ref": "80373b24fca3bdb03c0f5da6075cc84520938f8f",
-        "repo": "ihp",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/eisfunke/repos/work/ihp"
       }
     },
     "lowdown-src": {
@@ -111,6 +131,7 @@
       "inputs": {
         "lowdown-src": "lowdown-src",
         "nixpkgs": [
+          "ihp",
           "devenv",
           "nixpkgs"
         ],
@@ -143,6 +164,24 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib": {
+      "locked": {
+        "dir": "lib",
+        "lastModified": 1685564631,
+        "narHash": "sha256-8ywr3AkblY4++3lIVxmrWZFzac7+f32ZEhH/A8pNscI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4f53efe34b3a8877ac923b9350c874e3dcd5dc0a",
+        "type": "github"
+      },
+      "original": {
+        "dir": "lib",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -198,23 +237,25 @@
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": [
+          "ihp",
           "devenv",
           "flake-compat"
         ],
         "flake-utils": "flake-utils",
         "gitignore": "gitignore",
         "nixpkgs": [
+          "ihp",
           "devenv",
           "nixpkgs"
         ],
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1682596858,
-        "narHash": "sha256-Hf9XVpqaGqe/4oDGr30W8HlsWvJXtMsEPHDqHZA6dDg=",
+        "lastModified": 1686050334,
+        "narHash": "sha256-R0mczWjDzBpIvM3XXhO908X5e2CQqjyh/gFbwZk/7/Q=",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "fb58866e20af98779017134319b5663b8215d912",
+        "rev": "6881eb2ae5d8a3516e34714e7a90d9d95914c4dc",
         "type": "github"
       },
       "original": {
@@ -225,10 +266,7 @@
     },
     "root": {
       "inputs": {
-        "devenv": "devenv",
-        "ihp": "ihp",
-        "nixpkgs": "nixpkgs_2",
-        "systems": "systems"
+        "ihp": "ihp"
       }
     },
     "systems": {

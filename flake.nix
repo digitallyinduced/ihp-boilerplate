@@ -1,75 +1,21 @@
 {
-    inputs = {
-        # Here you can adjust the IHP version of your project
-        # You can find new releases at https://github.com/digitallyinduced/ihp/releases
-        ihp.url = "github:digitallyinduced/ihp?ref=80373b24fca3bdb03c0f5da6075cc84520938f8f";
-        ihp.flake = false;
+    inputs.ihp.url = "github:digitallyinduced/ihp/nicolas/flake";  # TODO branch/release
 
-        # See https://ihp.digitallyinduced.com/Guide/package-management.html#nixpkgs-pinning
-        nixpkgs.url = "github:NixOS/nixpkgs?rev=a95ed9fe764c3ba2bf2d2fa223012c379cd6b32e";
+    outputs = { self, ihp }: ihp.inputs.flake-parts.lib.mkFlake { inherit (ihp) inputs; } {
 
-        systems.url = "github:nix-systems/default";
-        devenv.url = "github:cachix/devenv";
-    };
+        systems = import ihp.inputs.systems;
+        imports = [ ihp.flakeModules.default ];
 
-    outputs = { self, nixpkgs, devenv, systems, ihp, ... } @ inputs:
-        let
-            devenvConfig = { pkgs, ... }: {
-                # See full reference at https://devenv.sh/reference/options/
-                # For IHP specific options, see https://ihp.digitallyinduced.com/Guide/package-management.html
+        perSystem = { pkgs, ... }: {
+            devenv.shells.default.packages = with pkgs; [
+                # Native dependencies, e.g. imagemagick
+            ];
 
-                # Enable IHP support in devenv.sh
-                imports = [ "${inputs.ihp}/NixSupport/devenv.nix" ];
-                ihp.enable = true;
-                ihp.projectPath = ./.;
-
-                ihp.haskellPackages = p: with p; [
-                    # Haskell dependencies go here
-                    p.ihp
-                    cabal-install
-                    base
-                    wai
-                    text
-                    hlint
-                ];
-
-                packages = with pkgs; [
-                    # Native dependencies, e.g. imagemagick
-                ];
-            };
-            
-            # Settings when running `nix build`
-            releaseEnv = pkgs: import "${ihp}/NixSupport/default.nix" {
-                ihp = ihp;
-                haskellDeps = (devenvConfig pkgs).ihp.haskellPackages;
-                otherDeps = p: (devenvConfig pkgs).packages;
+            ihp = {
+                enable = true;
                 projectPath = ./.;
-
-                # Dev tools are not needed in the release build
-                includeDevTools = false;
-
-                # Set optimized = true to get more optimized binaries, but slower build times
-                optimized = false;
             };
-            forEachSystem = nixpkgs.lib.genAttrs (import systems);
-        in
-            {
-                # Dev shells are used for development, e.g. when running `nix develop --impure`
-                devShells = forEachSystem (system: {
-                    default = let pkgs = nixpkgs.legacyPackages.${system}; in devenv.lib.mkShell {
-                        inherit inputs pkgs;
-                        modules = [devenvConfig];
-                    };
-                });
-                # Binaries for deploying IHP apps. These are used by `nix build --impure`
-                defaultPackage = forEachSystem (system: releaseEnv nixpkgs.legacyPackages.${system});
-                # NixOS configurations goes here
-            };
-    
-    # The following is needed to use the IHP binary cache.
-    # This binary cache provides binaries for all IHP packages and commonly used dependencies for all nixpkgs versions used by IHP.
-    nixConfig = {
-        extra-substituters = "https://digitallyinduced.cachix.org";
-        extra-trusted-public-keys = "digitallyinduced.cachix.org-1:y+wQvrnxQ+PdEsCt91rmvv39qRCYzEgGQaldK26hCKE=";
+        };
+
     };
 }
