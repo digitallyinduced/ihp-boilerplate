@@ -4,15 +4,18 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "nix": "nix",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "ihp",
+          "nixpkgs"
+        ],
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1686161729,
-        "narHash": "sha256-PrKWK7xf01qRvxfJhxyHF3cC3ulqDzBtr+Ja+mIsEXc=",
+        "lastModified": 1686054274,
+        "narHash": "sha256-93aebyN7EMmeFFXisFIvp28UEbrozu79vd3pKPjvNR0=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "5200404ac8d501bde360cfeae7d8bd020a44755c",
+        "rev": "c51a56bac8853c019241fe8d821c0a0d82422835",
         "type": "github"
       },
       "original": {
@@ -97,18 +100,40 @@
       "inputs": {
         "devenv": "devenv",
         "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_2",
+        "ihp-boilerplate": "ihp-boilerplate",
+        "nixpkgs": "nixpkgs",
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1686139629,
-        "narHash": "sha256-beOM3RoPjYLYeU8ObOd8LWfTfo8Sns8lsLGgoqT5ZBg=",
-        "type": "git",
-        "url": "file:///home/eisfunke/repos/work/ihp"
+        "lastModified": 1686165906,
+        "narHash": "sha256-O7Tv8DZ/3IyQQeeTrnWCXOIkxOs7BMXotUWxGZphEUE=",
+        "owner": "digitallyinduced",
+        "repo": "ihp",
+        "rev": "c0f3afbf366cac6e7e6f1d886f6d14da6dd1f90a",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/eisfunke/repos/work/ihp"
+        "owner": "digitallyinduced",
+        "ref": "nicolas/flake",
+        "repo": "ihp",
+        "type": "github"
+      }
+    },
+    "ihp-boilerplate": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686165507,
+        "narHash": "sha256-ZaP8GfqjZDnMayPcvWxEqnZmRs4ixf5O5d1Ba867m4c=",
+        "owner": "digitallyinduced",
+        "repo": "ihp-boilerplate",
+        "rev": "ff63ce46b6fb68f1b8b3cdb0bdd6749f7ef1df93",
+        "type": "github"
+      },
+      "original": {
+        "owner": "digitallyinduced",
+        "ref": "nicolas/flake",
+        "repo": "ihp-boilerplate",
+        "type": "github"
       }
     },
     "lowdown-src": {
@@ -154,17 +179,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1678875422,
-        "narHash": "sha256-T3o6NcQPwXjxJMn2shz86Chch4ljXgZn746c2caGxd8=",
+        "lastModified": 1681488673,
+        "narHash": "sha256-PmojOyePBNvbY3snYE7NAQHTLB53t7Ro+pgiJ4wPCuk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "126f49a01de5b7e35a43fd43f891ecf6d3a51459",
+        "rev": "a95ed9fe764c3ba2bf2d2fa223012c379cd6b32e",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
+        "rev": "a95ed9fe764c3ba2bf2d2fa223012c379cd6b32e",
         "type": "github"
       }
     },
@@ -218,22 +243,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1681488673,
-        "narHash": "sha256-PmojOyePBNvbY3snYE7NAQHTLB53t7Ro+pgiJ4wPCuk=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "a95ed9fe764c3ba2bf2d2fa223012c379cd6b32e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "a95ed9fe764c3ba2bf2d2fa223012c379cd6b32e",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": [
@@ -251,11 +260,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1686050334,
-        "narHash": "sha256-R0mczWjDzBpIvM3XXhO908X5e2CQqjyh/gFbwZk/7/Q=",
+        "lastModified": 1682596858,
+        "narHash": "sha256-Hf9XVpqaGqe/4oDGr30W8HlsWvJXtMsEPHDqHZA6dDg=",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "6881eb2ae5d8a3516e34714e7a90d9d95914c4dc",
+        "rev": "fb58866e20af98779017134319b5663b8215d912",
         "type": "github"
       },
       "original": {
@@ -266,7 +275,19 @@
     },
     "root": {
       "inputs": {
-        "ihp": "ihp"
+        "flake-parts": [
+          "ihp",
+          "flake-parts"
+        ],
+        "ihp": "ihp",
+        "nixpkgs": [
+          "ihp",
+          "nixpkgs"
+        ],
+        "systems": [
+          "ihp",
+          "systems"
+        ]
       }
     },
     "systems": {

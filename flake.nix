@@ -1,21 +1,25 @@
 {
-    inputs.ihp.url = "github:digitallyinduced/ihp/nicolas/flake";  # TODO branch/release
+    # TODO use currently up-to-date release of IHP
+    inputs.ihp.url = "github:digitallyinduced/ihp/nicolas/flake";
+    inputs.nixpkgs.follows = "ihp/nixpkgs";
+    inputs.flake-parts.follows = "ihp/flake-parts";
+    inputs.systems.follows = "ihp/systems";
 
-    outputs = { self, ihp }: ihp.inputs.flake-parts.lib.mkFlake { inherit (ihp) inputs; } {
+    outputs = inputs@{ ihp, flake-parts, systems, ... }:
+        flake-parts.lib.mkFlake { inherit inputs; } {
 
-        systems = import ihp.inputs.systems;
-        imports = [ ihp.flakeModules.default ];
+            systems = import systems;
+            imports = [ ihp.flakeModules.default ];
 
-        perSystem = { pkgs, ... }: {
-            devenv.shells.default.packages = with pkgs; [
-                # Native dependencies, e.g. imagemagick
-            ];
-
-            ihp = {
-                enable = true;
-                projectPath = ./.;
+            perSystem = { pkgs, ... }: {
+                ihp = {
+                    enable = true;
+                    projectPath = ./.;
+                    packages = with pkgs; [
+                        # Native dependencies, e.g. imagemagick
+                    ];
+                };
             };
-        };
 
-    };
+        };
 }
