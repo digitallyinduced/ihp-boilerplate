@@ -1,9 +1,11 @@
 {
-    # TODO use currently up-to-date release of IHP
-    inputs.ihp.url = "github:digitallyinduced/ihp/nicolas/flake";
-    inputs.nixpkgs.follows = "ihp/nixpkgs";
-    inputs.flake-parts.follows = "ihp/flake-parts";
-    inputs.systems.follows = "ihp/systems";
+    inputs = {
+        # TODO use currently up-to-date release of IHP
+        ihp.url = "github:digitallyinduced/ihp/nicolas/flake";
+        nixpkgs.follows = "ihp/nixpkgs";
+        flake-parts.follows = "ihp/flake-parts";
+        systems.follows = "ihp/systems";
+    };
 
     outputs = inputs@{ ihp, flake-parts, systems, ... }:
         flake-parts.lib.mkFlake { inherit inputs; } {
