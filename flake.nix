@@ -4,6 +4,7 @@
         ihp.url = "github:digitallyinduced/ihp/nicolas/flake";
         nixpkgs.follows = "ihp/nixpkgs";
         flake-parts.follows = "ihp/flake-parts";
+        devenv.follows = "ihp/devenv";
         systems.follows = "ihp/systems";
     };
 
