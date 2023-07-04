@@ -21,6 +21,15 @@
                     packages = with pkgs; [
                         # Native dependencies, e.g. imagemagick
                     ];
+                    haskellPackages = p: with p; [
+                        # Haskell dependencies go here
+                        p.ihp
+                        cabal-install
+                        base
+                        wai
+                        text
+                        hlint
+                    ];
                 };
             };
 
