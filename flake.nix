@@ -1,7 +1,6 @@
 {
     inputs = {
-        # TODO use currently up-to-date release of IHP
-        ihp.url = "github:digitallyinduced/ihp/nicolas/flake";
+        ihp.url = "github:digitallyinduced/ihp";
         nixpkgs.follows = "ihp/nixpkgs";
         flake-parts.follows = "ihp/flake-parts";
         devenv.follows = "ihp/devenv";

@@ -105,16 +105,15 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1686165906,
-        "narHash": "sha256-O7Tv8DZ/3IyQQeeTrnWCXOIkxOs7BMXotUWxGZphEUE=",
+        "lastModified": 1689274971,
+        "narHash": "sha256-OnZDWHBwiCBbnf6ZpH8T+XqCbM3gV3gjCOHQ9qGhye4=",
         "owner": "digitallyinduced",
         "repo": "ihp",
-        "rev": "c0f3afbf366cac6e7e6f1d886f6d14da6dd1f90a",
+        "rev": "7fd9c8c29e4b57ea5a619d7f83bcaf1cd93ca16d",
         "type": "github"
       },
       "original": {
         "owner": "digitallyinduced",
-        "ref": "nicolas/flake",
         "repo": "ihp",
         "type": "github"
       }
@@ -275,6 +274,10 @@
     },
     "root": {
       "inputs": {
+        "devenv": [
+          "ihp",
+          "devenv"
+        ],
         "flake-parts": [
           "ihp",
           "flake-parts"
