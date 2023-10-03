@@ -27,7 +27,6 @@
                         base
                         wai
                         text
-                        hlint
                     ];
                 };
             };
