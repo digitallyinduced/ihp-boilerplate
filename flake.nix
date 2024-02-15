@@ -88,6 +88,8 @@
 
                                 SMTP_HOST = "email-smtp.eu-west-1.amazonaws.com";
                                 SMTP_PORT = "587";
+                                SMTP_ENCRYPTION = "STARTTLS";
+
                                 SMTP_USER = "CHANGE-ME";
                                 SMTP_PASSWORD = "CHANGE-ME";
 
