@@ -19,9 +19,6 @@
                     projectPath = ./.;
                     packages = with pkgs; [
                         # Native dependencies, e.g. imagemagick
-
-                        # Uncomment on local development to catch outgoing emails
-                        # mailhog
                     ];
                     haskellPackages = p: with p; [
                         # Haskell dependencies go here
@@ -38,7 +35,7 @@
 
                 # Custom configuration that will start with `devenv up`
                 devenv.shells.default = {
-                    # Start Mailhog
+                    # Start Mailhog on local development to catch outgoing emails
                     services.mailhog.enable = true;
 
                     # Custom processes that don't appear in https://devenv.sh/reference/options/
