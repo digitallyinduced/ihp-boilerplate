@@ -49,11 +49,11 @@
                 };
             };
 
-            # Adding the new NixOS configuration for "ihp-app"
+            # Adding the new NixOS configuration for "qa"
             # Used to deploy the IHP application to AWS.
             #
             # Change the `CHANGE-ME` to your correct config.
-            flake.nixosConfigurations."ihp-app" = nixpkgs.lib.nixosSystem {
+            flake.nixosConfigurations."qa" = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = inputs;
                 modules = [
