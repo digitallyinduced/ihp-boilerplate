@@ -20,8 +20,8 @@
                     packages = with pkgs; [
                         # Native dependencies, e.g. imagemagick
 
-                        # Used on local development to catch outgoing emails
-                        mailhog
+                        # Uncomment on local development to catch outgoing emails
+                        # mailhog
                     ];
                     haskellPackages = p: with p; [
                         # Haskell dependencies go here
@@ -31,8 +31,8 @@
                         wai
                         text
 
-                        # Package for testing
-                        hspec
+                        # Uncomment on local development for testing
+                        # hspec
                     ];
                 };
 
@@ -62,8 +62,8 @@
                     ({ lib, pkgs, ... }: {
 
                         networking.firewall = {
-                           enable = true;
-                           allowedTCPPorts = [ 22 80 443 8000 ];
+                            enable = true;
+                            allowedTCPPorts = [ 22 80 443 8000 ];
                         };
 
                         # Enable the Let's encrypt certificate
@@ -73,10 +73,10 @@
                         security.acme.acceptTerms = true;
 
                         services.nginx = {
-                          virtualHosts."CHANGE-ME.com" =  {
-                            # Uncomment to have http auth with username `foo` and password `bar`.
-                            # basicAuth = { foo = "bar"; };
-                          };
+                            virtualHosts."CHANGE-ME.com" =  {
+                                # Uncomment to have http auth with username `foo` and password `bar`.
+                                # basicAuth = { foo = "bar"; };
+                            };
                         };
 
                         services.ihp = {
@@ -88,18 +88,19 @@
                             additionalEnvVars = {
                                 # Uncomment to use a custom database URL
                                 # DATABASE_URL = "postgresql://postgres:...CHANGE-ME";
+
                                 SMTP_HOST = "email-smtp.eu-west-1.amazonaws.com";
                                 SMTP_PORT = "587";
                                 SMTP_USER = "CHANGE-ME";
                                 SMTP_PASSWORD = "CHANGE-ME";
+
                                 # Indicate the environment name, e.g. "production", "staging", "qa".
                                 ENV_NAME = "qa";
+
                                 AWS_ACCESS_KEY_ID = "CHANGE-ME";
                                 AWS_SECRET_ACCESS_KEY = "CHANGE-ME";
                             };
                         };
-
-                        swapDevices = [ { device = "/swapfile"; size = 3000; } ];
 
                         # Keep as is.
                         system.stateVersion = "23.05";
