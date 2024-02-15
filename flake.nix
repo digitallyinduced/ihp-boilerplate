@@ -83,6 +83,9 @@
                             fixtures = ./Application/Fixtures.sql;
                             sessionSecret = "CHANGE-ME";
                             additionalEnvVars = {
+                                # Indicate the environment name, e.g. "production", "staging", "qa".
+                                ENV_NAME = "qa";
+
                                 # Uncomment to use a custom database URL
                                 # DATABASE_URL = "postgresql://postgres:...CHANGE-ME";
 
@@ -92,9 +95,6 @@
 
                                 SMTP_USER = "CHANGE-ME";
                                 SMTP_PASSWORD = "CHANGE-ME";
-
-                                # Indicate the environment name, e.g. "production", "staging", "qa".
-                                ENV_NAME = "qa";
 
                                 AWS_ACCESS_KEY_ID = "CHANGE-ME";
                                 AWS_SECRET_ACCESS_KEY = "CHANGE-ME";
