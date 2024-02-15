@@ -19,6 +19,9 @@
                     projectPath = ./.;
                     packages = with pkgs; [
                         # Native dependencies, e.g. imagemagick
+
+                        # Used on local development to catch outgoing emails
+                        mailhog
                     ];
                     haskellPackages = p: with p; [
                         # Haskell dependencies go here
@@ -27,8 +30,81 @@
                         base
                         wai
                         text
+
+                        # Package for testing
+                        hspec
                     ];
                 };
+
+                # Custom configuration that will start with `devenv up`
+                devenv.shells.default = {
+                    # Start Mailhog
+                    services.mailhog.enable = true;
+
+                    # Custom processes that don't appear in https://devenv.sh/reference/options/
+                    processes = {
+                        # Uncomment if you use tailwindcss.
+                        # tailwind.exec = "tailwindcss -c tailwind/tailwind.config.js -i ./tailwind/app.css -o static/app.css --watch=always";
+                    };
+                };
+            };
+
+            # Adding the new NixOS configuration for "ihp-app"
+            # Used to deploy the IHP application to AWS.
+            #
+            # Change the `CHANGE-ME` to your correct config.
+            flake.nixosConfigurations."ihp-app" = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = inputs;
+                modules = [
+                    "${nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
+                    ihp.nixosModules.appWithPostgres
+                    ({ lib, pkgs, ... }: {
+
+                        networking.firewall = {
+                           enable = true;
+                           allowedTCPPorts = [ 22 80 443 8000 ];
+                        };
+
+                        # Enable the Let's encrypt certificate
+                        security.acme.defaults.email = "CHANGE-ME@example.com";
+
+                        # Accept the terms of service of the Let's encrypt provider.
+                        security.acme.acceptTerms = true;
+
+                        services.nginx = {
+                          virtualHosts."CHANGE-ME.com" =  {
+                            # Uncomment to have http auth with username `foo` and password `bar`.
+                            # basicAuth = { foo = "bar"; };
+                          };
+                        };
+
+                        services.ihp = {
+                            domain = "CHANGE-ME.com";
+                            migrations = ./Application/Migration;
+                            schema = ./Application/Schema.sql;
+                            fixtures = ./Application/Fixtures.sql;
+                            sessionSecret = "CHANGE-ME";
+                            additionalEnvVars = {
+                                # Uncomment to use a custom database URL
+                                # DATABASE_URL = "postgresql://postgres:...CHANGE-ME";
+                                SMTP_HOST = "email-smtp.eu-west-1.amazonaws.com";
+                                SMTP_PORT = "587";
+                                SMTP_USER = "CHANGE-ME";
+                                SMTP_PASSWORD = "CHANGE-ME";
+                                # Indicate the environment name, e.g. "production", "staging", "qa".
+                                ENV_NAME = "qa";
+                                AWS_ACCESS_KEY_ID = "CHANGE-ME";
+                                AWS_SECRET_ACCESS_KEY = "CHANGE-ME";
+                            };
+                        };
+
+                        swapDevices = [ { device = "/swapfile"; size = 3000; } ];
+
+                        # Keep as is.
+                        system.stateVersion = "23.05";
+                    })
+                ];
             };
 
         };
