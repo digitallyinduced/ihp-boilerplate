@@ -83,9 +83,6 @@
                             fixtures = ./Application/Fixtures.sql;
                             sessionSecret = "CHANGE-ME";
                             additionalEnvVars = {
-                                # Indicate the environment name, e.g. "production", "staging", "qa".
-                                ENV_NAME = "qa";
-
                                 # Uncomment to use a custom database URL
                                 # DATABASE_URL = "postgresql://postgres:...CHANGE-ME";
 
