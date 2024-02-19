@@ -100,7 +100,10 @@
                                 AWS_SECRET_ACCESS_KEY = "CHANGE-ME";
                             };
                         };
-
+                        # As we use a pre-built AMI on AWS,
+                        # it is essential to enable automatic updates.
+                        # @see https://nixos.wiki/wiki/Automatic_system_upgrades
+                        system.autoUpgrade.enable = true;
                         # Keep as is.
                         system.stateVersion = "23.05";
                     })
