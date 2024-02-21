@@ -47,6 +47,7 @@
             };
 
             # Adding the new NixOS configuration for "qa"
+            # See https://ihp.digitallyinduced.com/Guide/deployment.html#deploying-with-deploytonixos for more info
             # Used to deploy the IHP application to AWS.
             #
             # Change the `CHANGE-ME` to your correct config.
@@ -101,7 +102,7 @@
                         # it is essential to enable automatic updates.
                         # @see https://nixos.wiki/wiki/Automatic_system_upgrades
                         system.autoUpgrade.enable = true;
-                        # Keep as is.
+                        # Keep as is. See https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
                         system.stateVersion = "23.05";
                     })
                 ];
