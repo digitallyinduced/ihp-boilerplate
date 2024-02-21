@@ -36,7 +36,7 @@
                 # Custom configuration that will start with `devenv up`
                 devenv.shells.default = {
                     # Start Mailhog on local development to catch outgoing emails
-                    services.mailhog.enable = true;
+                    # services.mailhog.enable = true;
 
                     # Custom processes that don't appear in https://devenv.sh/reference/options/
                     processes = {
@@ -60,7 +60,7 @@
 
                         networking.firewall = {
                             enable = true;
-                            allowedTCPPorts = [ 22 80 443 8000 ];
+                            allowedTCPPorts = [ 22 80 443 ];
                         };
 
                         # Enable the Let's encrypt certificate
