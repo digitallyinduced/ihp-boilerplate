@@ -7,7 +7,7 @@
         systems.follows = "ihp/systems";
     };
 
-    outputs = inputs@{ ihp, flake-parts, systems, ... }:
+    outputs = inputs@{ self, nixpkgs, ihp, flake-parts, systems, ... }:
         flake-parts.lib.mkFlake { inherit inputs; } {
 
             systems = import systems;
