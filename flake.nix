@@ -78,32 +78,32 @@
                         };
 
                         # Logging to AWS CloudWatch
-                        services.vector = {
-                            enable = true;
-                            journaldAccess = true;
-                            settings = {
-                                sources.journald = {
-                                    type = "journald";
-                                    # Log only the services we care about
-                                    include_units = ["app.service" "nginx.service" "worker.service"];
-                                };
+                        # services.vector = {
+                        #     enable = true;
+                        #     journaldAccess = true;
+                        #     settings = {
+                        #         sources.journald = {
+                        #             type = "journald";
+                        #             # Log only the services we care about
+                        #             include_units = ["app.service" "nginx.service" "worker.service"];
+                        #         };
 
-                                sinks.out = {
-                                    group_name = "CHANGE-ME";
-                                    stream_name = "CHANGE-ME";
-                                    # Change the region to the correct one, e.g. `us-east-1`
-                                    region = "CHANGE-ME";
-                                    auth = {
-                                        access_key_id = "CHANGE-ME";
-                                        secret_access_key = "CHANGE-ME";
-                                    };
-                                    inputs  = ["journald"];
-                                    type = "aws_cloudwatch_logs";
-                                    compression = "gzip";
-                                    encoding.codec = "json";
-                                };
-                            };
-                        };
+                        #         sinks.out = {
+                        #             group_name = "CHANGE-ME";
+                        #             stream_name = "CHANGE-ME";
+                        #             # Change the region to the correct one, e.g. `us-east-1`
+                        #             region = "CHANGE-ME";
+                        #             auth = {
+                        #                 access_key_id = "CHANGE-ME";
+                        #                 secret_access_key = "CHANGE-ME";
+                        #             };
+                        #             inputs  = ["journald"];
+                        #             type = "aws_cloudwatch_logs";
+                        #             compression = "gzip";
+                        #             encoding.codec = "json";
+                        #         };
+                        #     };
+                        # };
 
                         services.ihp = {
                             domain = "CHANGE-ME.com";
