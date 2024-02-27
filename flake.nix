@@ -89,6 +89,7 @@
 
                                 # Uncomment to use a custom session secret, ensuring sessions aren't invalidated
                                 # on each deploy.
+                                # See https://ihp.digitallyinduced.com/Guide/deployment.html#ihpsessionsecret
                                 # IHP_SESSION_SECRET = "CHANGE-ME";
 
                                 SMTP_HOST = "email-smtp.eu-west-1.amazonaws.com";
