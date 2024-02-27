@@ -115,6 +115,11 @@
                                 # Uncomment to use a custom database URL
                                 # DATABASE_URL = "postgresql://postgres:...CHANGE-ME";
 
+                                # Uncomment to use a custom session secret, ensuring sessions aren't invalidated
+                                # on each deploy.
+                                # Learn how to create the secret key in https://ihp.digitallyinduced.com/Guide/deployment.html#ihpsessionsecret
+                                # IHP_SESSION_SECRET = "CHANGE-ME";
+
                                 SMTP_HOST = "email-smtp.eu-west-1.amazonaws.com";
                                 SMTP_PORT = "587";
                                 SMTP_ENCRYPTION = "STARTTLS";
