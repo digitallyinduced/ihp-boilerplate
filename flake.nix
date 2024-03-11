@@ -111,10 +111,10 @@
                             schema = ./Application/Schema.sql;
                             fixtures = ./Application/Fixtures.sql;
                             sessionSecret = "CHANGE-ME";
-                            additionalEnvVars = {
-                                # Uncomment to use a custom database URL
-                                # DATABASE_URL = "postgresql://postgres:...CHANGE-ME";
+                            # Uncomment to use a custom database URL
+                            # databaseUrl = lib.mkForce "postgresql://postgres:...CHANGE-ME";
 
+                            additionalEnvVars = {
                                 # Uncomment to use a custom session secret, ensuring sessions aren't invalidated
                                 # on each deploy.
                                 # Learn how to create the secret key in https://ihp.digitallyinduced.com/Guide/deployment.html#ihpsessionsecret
