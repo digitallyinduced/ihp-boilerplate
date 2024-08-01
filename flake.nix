@@ -15,6 +15,7 @@
 
             perSystem = { pkgs, ... }: {
                 ihp = {
+                    # appName = "app"; # Available with v1.4 or latest master
                     enable = true;
                     projectPath = ./.;
                     packages = with pkgs; [
