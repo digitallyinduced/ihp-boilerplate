@@ -1,10 +1,10 @@
-# IHP Boilerplate
+# IHP Project
 
-This repository contains a boilerplate for IHP (Integrated Haskell Platform) projects with GitHub Actions for testing and deployment, used by `ihp-new`, see the [Installation Guide](https://ihp.digitallyinduced.com/Guide/installation.html).
+This is an IHP (Integrated Haskell Platform) project with GitHub Actions for testing and deployment. For more information about IHP, see the [IHP Documentation](https://ihp.digitallyinduced.com/Guide/).
 
 ## GitHub Actions Workflow
 
-The repository includes a GitHub Actions workflow for automated testing and deployment. The workflow is defined in `.github/workflows/test.yml`.
+This project includes a GitHub Actions workflow for automated testing and deployment. The workflow is defined in `.github/workflows/test.yml`.
 
 ### Workflow Triggers
 
@@ -26,7 +26,7 @@ The testing job performs the following steps:
 
 ### Deployment
 
-To have the proper NixOS server up and running, follow the [Deployment Guide](https://ihp.digitallyinduced.com/Guide/deployment.html#deploying-with-deploytonixos) and create a proper virtual machine for your project.
+For deployment, follow the [IHP Deployment Guide](https://ihp.digitallyinduced.com/Guide/deployment.html#deploying-with-deploytonixos) to set up a proper NixOS server for your project.
 
 The deployment job runs after successful tests and only for the `main` branch. It performs the following steps:
 1. Checks out the code
@@ -38,24 +38,23 @@ The deployment job runs after successful tests and only for the `main` branch. I
 
 ## Setup Instructions
 
-To use this GitHub Actions workflow in your project:
-
+To use the GitHub Actions workflow in this project:
 
 1. Set up the following secrets in your GitHub [repository settings](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions):
-    - `SSH_HOST`: The hostname or IP address of your deployment server
-    - `SSH_USER`: The username for SSH access to the deployment server
-    - `SSH_PRIVATE_KEY`: The private SSH key for authentication
+   - `SSH_HOST`: The hostname or IP address of your deployment server
+   - `SSH_USER`: The username for SSH access to the deployment server
+   - `SSH_PRIVATE_KEY`: The private SSH key for authentication
 
-1. Modify the `env` section in `.github/workflows/test.yml` if needed:
-    - Update `PROJECT_NAME` to match your project
-    - Adjust `ENV` if you want to use a different environment name
-    - Update `NIXPKGS` if you want to use a different Nixpkgs version
+2. Modify the `env` section in `.github/workflows/test.yml` if needed:
+   - Update `PROJECT_NAME` to match your project
+   - Adjust `ENV` if you want to use a different environment name
+   - Update `NIXPKGS` if you want to use a different Nixpkgs version
 
-1. Ensure your project has the necessary test files in the `Test` directory.
+3. Ensure your project has the necessary test files in the `Test` directory.
 
-1. If your deployment process differs, modify the `deploy` job in the workflow file accordingly.
+4. If your deployment process differs, modify the `deploy` job in the workflow file accordingly.
 
-1Push your changes to the `main` branch to trigger the workflow.
+5. Push your changes to the `main` branch to trigger the workflow.
 
 ## Manual Workflow Trigger
 
@@ -67,6 +66,6 @@ Feel free to customize the workflow file to fit your specific project needs. You
 
 ## Support
 
-For issues related to this boilerplate or the GitHub Actions workflow, please open an issue in this repository.
+For issues related to IHP or this project's setup, please refer to the [IHP documentation](https://ihp.digitallyinduced.com/Guide/) or seek help on the [IHP Forum](https://ihp.digitallyinduced.com/community/).
 
-For general IHP support, refer to the [IHP documentation](https://ihp.digitallyinduced.com/Guide/) or the [IHP Forum](https://ihp.digitallyinduced.com/community/).
+For project-specific issues, please open an issue in this repository.
