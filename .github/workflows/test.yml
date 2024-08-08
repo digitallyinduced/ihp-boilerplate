@@ -61,7 +61,7 @@ jobs:
   deploy:
     name: Deploy
     needs: tests
-    if: contains(github.event.pull_request.head.ref, 'main')
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
