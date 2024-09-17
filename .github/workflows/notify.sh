@@ -2,10 +2,8 @@
 
 set -e
 
-# GitHub API URL
 API_URL="https://api.github.com"
 
-# Function to extract issue number from commit message
 extract_issue_number() {
     local commit_message="$1"
     local issue_number
@@ -48,7 +46,6 @@ print_debug_info() {
     env
 }
 
-# Get the commit message
 COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
 
 # Extract the issue number and PR number
@@ -59,7 +56,6 @@ if [ -z "$ISSUE_NUMBER" ]; then
     exit 0
 fi
 
-# Prepare the comment body
 if [ -n "$PR_NUMBER" ]; then
     COMMENT_BODY="The latest changes (#$PR_NUMBER) have been deployed successfully to [$URL_QA]($URL_QA)"
 else
@@ -77,7 +73,6 @@ RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
 RESPONSE_BODY=$(echo "$RESPONSE" | sed '$d')
 STATUS_CODE=$(echo "$RESPONSE" | tail -n1)
 
-# Check if the request was successful
 if [ "$STATUS_CODE" -ne 201 ]; then
     echo "Failed to post comment to issue #$ISSUE_NUMBER. HTTP status code: $STATUS_CODE"
     echo "Response body:"
