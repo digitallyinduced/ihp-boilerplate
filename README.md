@@ -44,6 +44,7 @@ To use the GitHub Actions workflow in this project:
    - `SSH_HOST`: The hostname or IP address of your deployment server
    - `SSH_USER`: The username for SSH access to the deployment server
    - `SSH_PRIVATE_KEY`: The private SSH key for authentication
+   - Optionally `GH_TOKEN`, a GitHub API token that is able to post comments to issues under the given project.
 
 2. Modify the `env` section in `.github/workflows/test.yml` if needed:
    - Update `PROJECT_NAME` to match your project
