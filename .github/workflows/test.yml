@@ -1,0 +1,95 @@
+name: Test and Deploy
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  ENV: "qa"
+  PROJECT_NAME: myproject
+  SSH_HOST: ${{ secrets.SSH_HOST }}
+  SSH_USER: ${{ secrets.SSH_USER }}
+  SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  NIXPKGS: "https://github.com/NixOS/nixpkgs/archive/51bcdc4cdaac48535dabf0ad4642a66774c609ed.tar.gz"
+
+jobs:
+  tests:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v27
+      with:
+        nix_path: nixpkgs=${{ env.NIXPKGS}}
+
+    # Use the cachix cache for faster builds.
+    - name: Cachix Init
+      uses: cachix/cachix-action@v15
+      with:
+        name: digitallyinduced
+        skipPush: true
+
+    # Install direnv, which also `direnv allow`s the project.
+    - uses: HatsuneMiku3939/direnv-action@v1.0.7
+      with:
+        direnvVersion: 2.32.3
+
+    - name: Run project and tests
+      run: |
+          # @see https://github.com/actions/runner-images/issues/2840#issuecomment-1284059930
+          # IHP - NixOS requires a lots of disk space.
+          # Larger projects could easily run into unexpected failures.
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+
+          # Build generated files.
+          nix-shell --run "make build/Generated/Types.hs"
+
+          # Start the project in the background.
+          nix-shell --run "devenv up &"
+
+          # Execute the tests.
+          nix-shell --run "runghc $(make print-ghc-extensions) -i. -ibuild -iConfig Test/Main.hs"
+
+  deploy:
+    name: Deploy
+    needs: tests
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ env.SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ env.SSH_HOST }} >> ~/.ssh/known_hosts
+        echo -e "Host ${{ env.PROJECT_NAME}}-${{ env.ENV }}\n  HostName ${{ env.SSH_HOST }}\n  User ${{ env.SSH_USER }}\n  IdentityFile ~/.ssh/id_rsa" > ~/.ssh/config
+        chmod 600 ~/.ssh/config
+
+    - uses: cachix/install-nix-action@v20
+      with:
+        nix_path: nixpkgs=${{ env.NIXPKGS}}
+
+    - name: Cachix Init
+      uses: cachix/cachix-action@v12
+      with:
+        name: digitallyinduced
+        skipPush: true
+
+    - uses: HatsuneMiku3939/direnv-action@v1
+      with:
+        direnvVersion: 2.32.3
+
+    - name: Deploy
+      run: |
+          deploy-to-nixos ${{ env.PROJECT_NAME}}-${{ env.ENV }}

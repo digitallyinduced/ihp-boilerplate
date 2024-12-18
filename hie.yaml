@@ -1,4 +1,4 @@
 # Used by haskell-language-server to find GHC settings
 cradle:
     bios:
-        program: build/ihp-lib/.hie-bios
+        shell: "$IHP/.hie-bios"
