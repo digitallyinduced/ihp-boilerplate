@@ -1,6 +1,6 @@
 .DS_Store
-.envrc
 .idea
+.env
 tmp
 result
 node_modules
@@ -23,3 +23,8 @@ elm-stuff
 static/elm
 # Ignore locally checked out IHP version
 IHP
+
+# devenv.sh
+.devenv*
+devenv.local.nix
+.direnv
