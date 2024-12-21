@@ -39,10 +39,13 @@
                     # Start Mailhog on local development to catch outgoing emails
                     # services.mailhog.enable = true;
 
+                    languages.elm.enable = true;
+
                     # Custom processes that don't appear in https://devenv.sh/reference/options/
                     processes = {
                         # Uncomment if you use tailwindcss.
                         # tailwind.exec = "tailwindcss -c tailwind/tailwind.config.js -i ./tailwind/app.css -o static/app.css --watch=always";
+                        frontend.exec = "npm run run-dev-elm";
                     };
                 };
             };
