@@ -20,6 +20,7 @@
                     projectPath = ./.;
                     packages = with pkgs; [
                         # Native dependencies, e.g. imagemagick
+                        nodejs # elm support needs node npm
                     ];
                     haskellPackages = p: with p; [
                         # Haskell dependencies go here
