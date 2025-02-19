@@ -26,4 +26,6 @@ static/miso/ghc_wasm_jsffi.js:
 	hs_wasm_path=$(shell wasm32-wasi-cabal list-bin Frontend)
 	hs_wasm_libdir=$(shell wasm32-wasi-ghc --print-libdir)
 	"$$hs_wasm_libdir"/post-link.mjs --input "$$hs_wasm_path" --output static/miso/ghc_wasm_jsffi.js
-	cp "$$hs_wasm_path" static/miso/bin.wasm
+	env -i GHCRTS=-H64m $(shell type -P wizer) --allow-wasi --wasm-bulk-memory true --inherit-env true --init-func _initialize -o static/miso/bin.wasm "$$hs_wasm_path"
+	wasm-opt -Oz static/miso/bin.wasm -o static/miso/bin.wasm
+	wasm-tools strip -o static/miso/bin.wasm static/miso/bin.wasm
