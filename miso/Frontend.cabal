@@ -8,9 +8,12 @@ executable Frontend
         App
     build-depends:
         base ^>= {4.19, 4.20},
+        jsaddle-dom ^>= 0.9,
         miso ^>= 1.8,
+        transformers ^>= 0.6,
     default-language: GHC2021
     default-extensions:
+        BlockArguments
         LambdaCase
         OverloadedStrings
     ghc-options: -Wall -Wunused-packages
