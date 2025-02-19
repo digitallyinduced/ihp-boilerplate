@@ -1,0 +1,12 @@
+optional-packages: miso
+
+if arch(wasm32)
+  -- The global config for Wasm Cabal adds `:override` for `head.hackage`, which is often not what we want:
+  -- https://gitlab.haskell.org/haskell-wasm/ghc-wasm-meta/-/issues/9#note_609714
+  active-repositories: :rest, head.hackage.ghc.haskell.org
+
+  -- https://github.com/haskellari/splitmix/pull/73
+  source-repository-package
+    type: git
+    location: https://github.com/amesgen/splitmix
+    tag: cea9e31bdd849eb0c17611bb99e33d590e126164

@@ -5,6 +5,7 @@
         flake-parts.follows = "ihp/flake-parts";
         devenv.follows = "ihp/devenv";
         systems.follows = "ihp/systems";
+        ghc-wasm-meta.url = "gitlab:haskell-wasm/ghc-wasm-meta?host=gitlab.haskell.org";
     };
 
     outputs = inputs@{ self, nixpkgs, ihp, flake-parts, systems, ... }:
@@ -13,13 +14,15 @@
             systems = import systems;
             imports = [ ihp.flakeModules.default ];
 
-            perSystem = { pkgs, ... }: {
+            perSystem = { pkgs, system, ... }: {
                 ihp = {
                     # appName = "app"; # Available with v1.4 or latest master
                     enable = true;
                     projectPath = ./.;
                     packages = with pkgs; [
                         # Native dependencies, e.g. imagemagick
+                        inputs.ghc-wasm-meta.packages.${system}.all_9_10
+                        inotify-tools
                     ];
                     haskellPackages = p: with p; [
                         # Haskell dependencies go here
@@ -43,6 +46,7 @@
                     processes = {
                         # Uncomment if you use tailwindcss.
                         # tailwind.exec = "tailwindcss -c tailwind/tailwind.config.js -i ./tailwind/app.css -o static/app.css --watch=always";
+                        frontend.exec = "./watch-frontend";
                     };
                 };
             };

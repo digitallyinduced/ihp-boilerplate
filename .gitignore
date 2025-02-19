@@ -18,6 +18,7 @@ gen
 del
 static/prod.*
 Config/client_session_key.aes
+static/miso
 
 # Ignore locally checked out IHP version
 IHP

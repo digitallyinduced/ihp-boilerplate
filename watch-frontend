@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+inotifywait -m -r -e close_write --format '%w%f' miso | while read NEWFILE
+do
+    echo "File modified: ${NEWFILE}"
+    wasm32-wasi-cabal build Frontend
+    cp $(wasm32-wasi-cabal list-bin Frontend) static/miso/bin.wasm
+done
