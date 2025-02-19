@@ -1,0 +1,20 @@
+cabal-version: 3.0
+name: Frontend
+version: 0.1
+
+executable Frontend
+    main-is: Main.hs
+    other-modules:
+        App
+    build-depends:
+        base ^>= {4.19, 4.20},
+        miso ^>= 1.8,
+    default-language: GHC2021
+    default-extensions:
+        LambdaCase
+        OverloadedStrings
+    ghc-options: -Wall -Wunused-packages
+    if arch(wasm32)
+        ghc-options: -no-hs-main -optl-mexec-model=reactor "-optl-Wl,--export=hs_start"
+        build-depends:
+            jsaddle-wasm ^>= 0.0.1,

@@ -1,0 +1,10 @@
+--- Web/View/Static/Welcome.hs	2021-01-21 11:34:59.524263194 +0100
++++ Welcome.hs	2021-01-21 11:35:42.646954932 +0100
+@@ -14,6 +14,9 @@
+                   <h2 style="margin-top: 0; margin-bottom: 0rem; font-weight: 900; font-size: 3rem">
+                       It's working!
+                   </h2>
++                  <div id="miso"></div>
+ 
+                   <p style="margin-top: 1rem; font-size: 1.75rem; font-weight: 600; color:hsla(196, 13%, 80%, 1)">
+                      Your new application is up and running.

@@ -1,0 +1,10 @@
+#!/bin/sh
+make print-ghc-options GHC_RTS_FLAGS='' | tr ' ' '\n' > "$HIE_BIOS_OUTPUT"
+echo "$HIE_BIOS_ARG" >> "$HIE_BIOS_OUTPUT"
+find . \
+    -path './miso' -prune -o \
+    -path './dist*' -prune -o \
+    -path './Setup.hs' -prune -o \
+    -name '*.hs' \
+    -print \
+    >> "$HIE_BIOS_OUTPUT"
