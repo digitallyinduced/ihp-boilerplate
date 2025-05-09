@@ -96,6 +96,11 @@
 
                                 AWS_ACCESS_KEY_ID = "CHANGE-ME";
                                 AWS_SECRET_ACCESS_KEY = "CHANGE-ME";
+
+                                # The location of the RSA generated files.
+                                # Files are created below, see `systemd.services.app.preStart`.
+                                JWT_PRIVATE_KEY_PATH = "/root/jwtRS256.key";
+                                JWT_PUBLIC_KEY_PATH = "/root/jwtRS256.key.pub";
                             };
                         };
                         # As we use a pre-built AMI on AWS,
@@ -104,6 +109,17 @@
                         system.autoUpgrade.enable = true;
                         # Keep as is. See https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
                         system.stateVersion = "23.05";
+
+                        # Create RSA keys for JWT authentication.
+                        # See for example https://ihp.digitallyinduced.com/Guide/file-storage.html#image-style-implementation
+                        systemd.services.app.preStart = ''
+                            if [ ! -f /root/jwtRS256.key ]; then
+                            # Generate the private key
+                            ${pkgs.openssl}/bin/openssl genpkey -algorithm RSA -out /root/jwtRS256.key -pkeyopt rsa_keygen_bits:4096
+                            # Extract the public key from the private key
+                            ${pkgs.openssl}/bin/openssl rsa -pubout -in /root/jwtRS256.key -out /root/jwtRS256.key.pub
+                            fi
+                        '';
                     })
                 ];
             };
