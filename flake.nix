@@ -28,9 +28,6 @@
                         wai
                         text
 
-                        # Uncomment to use RSA keys for JWT authentication
-                        # jwt
-
                         # Uncomment on local development for testing
                         # hspec
                     ];
