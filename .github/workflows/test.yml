@@ -25,9 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: cachix/install-nix-action@v27
+    - uses: DeterminateSystems/nix-installer-action@main
       with:
-        nix_path: nixpkgs=${{ env.NIXPKGS}}
+        determinate: true
+        extra-conf: "lazy-trees = true"        
 
     # Use the cachix cache for faster builds.
     - name: Cachix Init
