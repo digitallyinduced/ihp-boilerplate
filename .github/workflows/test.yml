@@ -28,7 +28,7 @@ jobs:
     - uses: DeterminateSystems/nix-installer-action@main
       with:
         determinate: true
-        extra-conf: "lazy-trees = true"        
+        extra-conf: "lazy-trees = true"
 
     # Use the cachix cache for faster builds.
     - name: Cachix Init
@@ -37,19 +37,28 @@ jobs:
         name: digitallyinduced
         skipPush: true
 
+    # Free up disk space before building
+    - name: Free disk space
+      run: |
+        # @see https://github.com/actions/runner-images/issues/2840#issuecomment-1284059930
+        # IHP - NixOS requires a lots of disk space.
+        sudo rm -rf /usr/share/dotnet
+        sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+        sudo rm -rf /opt/hostedtoolcache
+        sudo docker system prune -af
+
+    # Pre-build shell environment to speed up direnv
+    - name: Pre-build shell environment
+      run: |
+        nix develop --impure --accept-flake-config --profile dev-profile -c true
+
     # Install direnv, which also `direnv allow`s the project.
-    - uses: HatsuneMiku3939/direnv-action@v1.0.7
+    - uses: HatsuneMiku3939/direnv-action@v1.1.0
       with:
         direnvVersion: 2.32.3
 
     - name: Run project and tests
       run: |
-          # @see https://github.com/actions/runner-images/issues/2840#issuecomment-1284059930
-          # IHP - NixOS requires a lots of disk space.
-          # Larger projects could easily run into unexpected failures.
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-
           # Build generated files.
           make build/Generated/Types.hs
 
