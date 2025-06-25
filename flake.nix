@@ -1,12 +1,14 @@
 {
-    nixConfig = {
-        extra-substituters = [
-            "https://CHANGE-ME.cachix.org"
-        ];
-        extra-trusted-public-keys = [
-            "CHANGE-ME.cachix.org-1:CHANGE-ME-PUBLIC-KEY"
-        ];
-    };
+    # Add own cachix cache here to speed up builds.
+    # Uncomment the following lines and replace `CHANGE-ME` with your cachix cache name
+    # nixConfig = {
+    #     extra-substituters = [
+    #         "https://CHANGE-ME.cachix.org"
+    #     ];
+    #     extra-trusted-public-keys = [
+    #         "CHANGE-ME.cachix.org-1:CHANGE-ME-PUBLIC-KEY"
+    #     ];
+    # };
 
     inputs = {
         ihp.url = "github:digitallyinduced/ihp/v1.3";
