@@ -37,6 +37,14 @@ jobs:
         name: digitallyinduced
         skipPush: true
 
+    # # Initialize custom cachix for pushing
+    # - name: Custom Cachix Init
+    #   uses: cachix/cachix-action@v15
+    #   with:
+    #     name: CHANGE-ME
+    #     authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    #     skipPush: true
+
     # Free up disk space before building
     - name: Free disk space
       run: |
@@ -67,6 +75,12 @@ jobs:
 
           # Execute the tests.
           runghc $(make print-ghc-extensions) -i. -ibuild -iConfig Test/Main.hs
+
+    # Push to cachix after successful tests
+    # - name: Push to Cachix
+    #   if: github.ref == 'refs/heads/main'
+    #   run: |
+    #     nix build --no-link --json .#nixosConfigurations.qa.config.system.build.toplevel | jq -r '.[].outputs.out' | cachix push CHANGE-ME
 
   deploy:
     name: Deploy

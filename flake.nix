@@ -1,4 +1,13 @@
 {
+    nixConfig = {
+        extra-substituters = [
+            "https://CHANGE-ME.cachix.org"
+        ];
+        extra-trusted-public-keys = [
+            "CHANGE-ME.cachix.org-1:CHANGE-ME-PUBLIC-KEY"
+        ];
+    };
+
     inputs = {
         ihp.url = "github:digitallyinduced/ihp/v1.3";
         nixpkgs.follows = "ihp/nixpkgs";
