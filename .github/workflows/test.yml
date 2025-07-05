@@ -32,7 +32,7 @@ jobs:
 
     # Use the cachix cache for faster builds.
     - name: Cachix Init
-      uses: cachix/cachix-action@v15
+      uses: cachix/cachix-action@v16
       with:
         name: digitallyinduced
         skipPush: true
@@ -101,12 +101,12 @@ jobs:
         echo -e "Host ${{ env.PROJECT_NAME}}-${{ env.ENV }}\n  HostName ${{ env.SSH_HOST }}\n  User ${{ env.SSH_USER }}\n  IdentityFile ~/.ssh/id_rsa" > ~/.ssh/config
         chmod 600 ~/.ssh/config
 
-    - uses: cachix/install-nix-action@v20
+    - uses: cachix/install-nix-action@v31
       with:
         nix_path: nixpkgs=${{ env.NIXPKGS}}
 
     - name: Cachix Init
-      uses: cachix/cachix-action@v12
+      uses: cachix/cachix-action@v16
       with:
         name: digitallyinduced
         skipPush: true
