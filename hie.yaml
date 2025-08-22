@@ -1,4 +1,13 @@
 # Used by haskell-language-server to find GHC settings
 cradle:
-    bios:
-        shell: "$IHP/.hie-bios"
+  multi:
+    - path: "./miso"
+      config:
+        cradle:
+          cabal:
+            component: "exe:Frontend"
+    - path: "."
+      config:
+        cradle:
+          bios:
+            shell: "./.hie-bios"
