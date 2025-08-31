@@ -1,6 +1,6 @@
 {
     inputs = {
-        ihp.url = "github:digitallyinduced/ihp/v1.3";
+        ihp.url = "github:digitallyinduced/ihp/v1.4";
         nixpkgs.follows = "ihp/nixpkgs";
         flake-parts.follows = "ihp/flake-parts";
         devenv.follows = "ihp/devenv";
@@ -15,7 +15,7 @@
 
             perSystem = { pkgs, ... }: {
                 ihp = {
-                    # appName = "app"; # Available with v1.4 or latest master
+                    appName = "app"; # Change this to your project name
                     enable = true;
                     projectPath = ./.;
                     packages = with pkgs; [
