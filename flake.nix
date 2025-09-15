@@ -34,6 +34,29 @@
                     ];
                 };
 
+                # Frontend build configuration for Tailwind CSS
+                # Uncomment the following block to enable Tailwind CSS build process
+                # packages.frontend = pkgs.stdenv.mkDerivation {
+                #     name = "frontend";
+                #     src = ./.;
+                #     buildInputs = with pkgs; [ nodejs yarn ];
+                #     buildPhase = ''
+                #         # Install dependencies
+                #         yarn install --frozen-lockfile
+                #
+                #         # Build Tailwind CSS
+                #         # Adapt the following line to match your project structure:
+                #         # ./node_modules/.bin/tailwindcss -i ./src/styles/globals.css -o ./static/tailwind.css
+                #
+                #         # Build other frontend assets if needed
+                #         # yarn build
+                #     '';
+                #     installPhase = ''
+                #         mkdir -p $out
+                #         cp -r static/* $out/ || true
+                #     '';
+                # };
+
                 # Custom configuration that will start with `devenv up`
                 devenv.shells.default = {
                     # Start Mailhog on local development to catch outgoing emails
