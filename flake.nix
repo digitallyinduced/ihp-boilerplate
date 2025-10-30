@@ -53,14 +53,20 @@
             flake.nixosConfigurations."production" = import ./Config/nix/hosts/production/host.nix { inherit inputs; };
         };
 
-    # Add own cachix cache here to speed up builds.
-    # Uncomment the following lines and replace `CHANGE-ME` with your cachix cache name
-    # nixConfig = {
-    #     extra-substituters = [
-    #         "https://CHANGE-ME.cachix.org"
-    #     ];
-    #     extra-trusted-public-keys = [
-    #         "CHANGE-ME.cachix.org-1:CHANGE-ME-PUBLIC-KEY"
-    #     ];
-    # };
+    # The following configuration speeds up build times by using the devenv, cachix and digitallyinduced binary caches
+    # You can add your own cachix cache here to speed up builds. For that uncomment the following lines and replace `CHANGE-ME` with your cachix cache name
+    nixConfig = {
+        extra-substituters = [
+            "https://devenv.cachix.org"
+            "https://cachix.cachix.org"
+            "https://digitallyinduced.cachix.org"
+            # "https://CHANGE-ME.cachix.org"
+        ];
+        extra-trusted-public-keys = [
+            "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+            "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+            "digitallyinduced.cachix.org-1:y+wQvrnxQ+PdEsCt91rmvv39qRCYzEgGQaldK26hCKE="
+            # "CHANGE-ME.cachix.org-1:CHANGE-ME-PUBLIC-KEY"
+        ];
+    };
 }
