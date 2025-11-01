@@ -5,6 +5,10 @@
         flake-parts.follows = "ihp/flake-parts";
         devenv.follows = "ihp/devenv";
         systems.follows = "ihp/systems";
+        devenv-root = {
+            url = "file+file:///dev/null";
+            flake = false;
+        };
     };
 
     outputs = inputs@{ self, nixpkgs, ihp, flake-parts, systems, ... }:
