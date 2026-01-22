@@ -32,6 +32,8 @@
                         base
                         wai
                         text
+                        # ihp-mail
+                        # See https://ihp.digitallyinduced.com/Guide/mail.html
 
                         # Uncomment on local development for testing
                         # hspec
