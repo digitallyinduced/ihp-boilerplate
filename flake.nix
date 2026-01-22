@@ -32,6 +32,7 @@
                         base
                         wai
                         text
+                        # ihp-mail
 
                         # Uncomment on local development for testing
                         # hspec
