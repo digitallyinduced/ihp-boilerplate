@@ -130,5 +130,8 @@ jobs:
         direnvVersion: 2.32.3
 
     - name: Deploy
+      env:
+        GITHUB_REPOSITORY: ${{ github.repository }}
       run: |
           deploy-to-nixos ${{ env.PROJECT_NAME}}-${{ env.ENV }}
+          .github/workflows/notify.sh
