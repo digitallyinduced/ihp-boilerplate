@@ -131,4 +131,5 @@ jobs:
 
     - name: Deploy
       run: |
-          deploy-to-nixos ${{ env.PROJECT_NAME}}-${{ env.ENV }}
+          set -eo pipefail
+          deploy-to-nixos ${{ env.PROJECT_NAME}}-${{ env.ENV }} || { echo "::error::Deployment failed!"; exit 1; }

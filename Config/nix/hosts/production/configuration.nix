@@ -1,4 +1,7 @@
 { ihp, lib, pkgs, ... }: {
+    # Disable vim as default editor (set by IHP module) - not needed for deployment
+    programs.vim.defaultEditor = lib.mkForce false;
+
     imports = [
         ./hardware-configuration.nix
 
