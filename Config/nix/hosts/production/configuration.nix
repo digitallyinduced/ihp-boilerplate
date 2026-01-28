@@ -1,4 +1,6 @@
 { ihp, lib, pkgs, ... }: {
+    programs.vim.enable = true;
+
     imports = [
         ./hardware-configuration.nix
 
