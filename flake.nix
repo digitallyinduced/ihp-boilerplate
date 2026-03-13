@@ -2,6 +2,7 @@
     inputs = {
         ihp.url = "github:digitallyinduced/ihp/v1.4";
         nixpkgs.follows = "ihp/nixpkgs";
+        nixpkgs-nixos.follows = "ihp/nixpkgs-nixos";
         flake-parts.follows = "ihp/flake-parts";
         devenv.follows = "ihp/devenv";
         systems.follows = "ihp/systems";
@@ -11,7 +12,7 @@
         };
     };
 
-    outputs = inputs@{ self, nixpkgs, ihp, flake-parts, systems, ... }:
+    outputs = inputs@{ self, nixpkgs, nixpkgs-nixos, ihp, flake-parts, systems, ... }:
         flake-parts.lib.mkFlake { inherit inputs; } {
 
             systems = import systems;
