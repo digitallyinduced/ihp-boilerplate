@@ -50,6 +50,10 @@
                         # Uncomment if you use tailwindcss.
                         # tailwind.exec = "tailwindcss -c tailwind/tailwind.config.js -i ./tailwind/app.css -o static/app.css --watch=always";
                     };
+                }
+                // lib.optionalAttrs (builtins.getEnv "GITHUB_ACTIONS" == "true") {
+                    # This is needed so when running tests in GitHub actions, we can execute `devenv up &` without an error.
+                    process.manager.implementation = lib.mkForce "overmind";
                 };
             };
 
