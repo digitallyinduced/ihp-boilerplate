@@ -17,7 +17,7 @@
             systems = import systems;
             imports = [ ihp.flakeModules.default ];
 
-            perSystem = { pkgs, ... }: {
+            perSystem = { pkgs, lib, ... }: {
                 ihp = {
                     appName = "app"; # Change this to your project name
                     enable = true;
