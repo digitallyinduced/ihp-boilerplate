@@ -1,4 +1,14 @@
 {
+    # Change these to your cachix cache name and public key
+    nixConfig = {
+        extra-substituters = [
+            "https://CHANGE-ME.cachix.org"
+        ];
+        extra-trusted-public-keys = [
+            "CHANGE-ME.cachix.org-1:CHANGE-ME-PUBLIC-KEY"
+        ];
+    };
+
     inputs = {
         ihp.url = "github:digitallyinduced/ihp/v1.4";
         nixpkgs.follows = "ihp/nixpkgs";
@@ -17,7 +27,7 @@
             systems = import systems;
             imports = [ ihp.flakeModules.default ];
 
-            perSystem = { pkgs, ... }: {
+            perSystem = { pkgs, lib, config, self', ... }: {
                 ihp = {
                     appName = "app"; # Change this to your project name
                     enable = true;
@@ -28,17 +38,36 @@
                     haskellPackages = p: with p; [
                         # Haskell dependencies go here
                         p.ihp
-                        cabal-install
                         base
                         wai
                         text
                         # ihp-mail
                         # See https://ihp.digitallyinduced.com/Guide/mail.html
 
-                        # Uncomment on local development for testing
+                        # Uncomment for testing
                         # hspec
+                        # ihp-hspec
+                    ];
+                    devHaskellPackages = p: with p; [
+                        cabal-install
+                        # hlint
+                        # fourmolu
                     ];
                 };
+
+                # Push dev shell and prod server closures to cachix
+                # Uncomment and set your cachix cache name
+                # apps.push-cachix = let cachixName = "CHANGE-ME"; in {
+                #     type = "app";
+                #     program = pkgs.writeShellScript "push-cachix" ''
+                #         set -eu
+                #         echo "Pushing dev shell to cachix..."
+                #         nix path-info --recursive ''${self'.devShells.default} | ''${pkgs.cachix}/bin/cachix push ''${cachixName}
+                #
+                #         echo "Pushing prod server to cachix..."
+                #         nix path-info --recursive ''${self'.packages.unoptimized-prod-server} | ''${pkgs.cachix}/bin/cachix push ''${cachixName}
+                #     '';
+                # };
 
                 # Custom configuration that will start with `devenv up`
                 devenv.shells.default = {
@@ -58,21 +87,4 @@
             # Used to deploy the IHP application
             flake.nixosConfigurations."production" = import ./Config/nix/hosts/production/host.nix { inherit inputs; };
         };
-
-    # The following configuration speeds up build times by using the devenv, cachix and digitallyinduced binary caches
-    # You can add your own cachix cache here to speed up builds. For that uncomment the following lines and replace `CHANGE-ME` with your cachix cache name
-    nixConfig = {
-        extra-substituters = [
-            "https://devenv.cachix.org"
-            "https://cachix.cachix.org"
-            "https://digitallyinduced.cachix.org"
-            # "https://CHANGE-ME.cachix.org"
-        ];
-        extra-trusted-public-keys = [
-            "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-            "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-            "digitallyinduced.cachix.org-1:y+wQvrnxQ+PdEsCt91rmvv39qRCYzEgGQaldK26hCKE="
-            # "CHANGE-ME.cachix.org-1:CHANGE-ME-PUBLIC-KEY"
-        ];
-    };
 }

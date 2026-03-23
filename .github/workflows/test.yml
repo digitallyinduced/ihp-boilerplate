@@ -92,10 +92,11 @@ jobs:
           runghc $(make print-ghc-extensions) -i. -ibuild -iConfig Test/Main.hs
 
     # Push to cachix after successful tests
+    # Requires apps.push-cachix to be uncommented in flake.nix
     # - name: Push to Cachix
     #   if: github.ref == 'refs/heads/main'
     #   run: |
-    #     nix build --no-link --json .#nixosConfigurations.qa.config.system.build.toplevel | jq -r '.[].outputs.out' | cachix push CHANGE-ME
+    #     nix run .#push-cachix
 
   deploy:
     name: Deploy
