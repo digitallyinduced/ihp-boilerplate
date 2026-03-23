@@ -1,16 +1,16 @@
 {
     # Change these to your cachix cache name and public key
-    nixConfig = {
-        extra-substituters = [
-            "https://CHANGE-ME.cachix.org"
-        ];
-        extra-trusted-public-keys = [
-            "CHANGE-ME.cachix.org-1:CHANGE-ME-PUBLIC-KEY"
-        ];
-    };
+    # nixConfig = {
+    #     extra-substituters = [
+    #         "https://CHANGE-ME.cachix.org"
+    #     ];
+    #     extra-trusted-public-keys = [
+    #         "CHANGE-ME.cachix.org-1:CHANGE-ME-PUBLIC-KEY"
+    #     ];
+    # };
 
     inputs = {
-        ihp.url = "github:digitallyinduced/ihp/v1.4";
+        ihp.url = "github:digitallyinduced/ihp/v1.5";
         nixpkgs.follows = "ihp/nixpkgs";
         flake-parts.follows = "ihp/flake-parts";
         devenv.follows = "ihp/devenv";
