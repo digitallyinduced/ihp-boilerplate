@@ -1057,16 +1057,16 @@
         "systems": "systems_7"
       },
       "locked": {
-        "lastModified": 1774344199,
-        "narHash": "sha256-heft1HTO28Ve2SANxfKfUGfJREuLkwLhGdTvXZpofXU=",
+        "lastModified": 1774346059,
+        "narHash": "sha256-uz4jSZbBJ9rBdq3RhMFO7oz30t742KQUy87o4lx5cP4=",
         "owner": "digitallyinduced",
         "repo": "ihp",
-        "rev": "b4eaa27ef6bdf210b95f7203b9f74c5b962e657f",
+        "rev": "5305ebfd73edb2ed90fafee125b57a1a5fb18dca",
         "type": "github"
       },
       "original": {
         "owner": "digitallyinduced",
-        "ref": "master",
+        "ref": "v1.5",
         "repo": "ihp",
         "type": "github"
       }
