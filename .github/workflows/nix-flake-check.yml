@@ -20,13 +20,15 @@ jobs:
       with:
         name: digitallyinduced
         skipPush: true
+
     # Uncomment and set your cachix cache name
     # - uses: cachix/cachix-action@v16
     #   with:
     #     name: CHANGE-ME
     #     skipPush: true
     - uses: DeterminateSystems/magic-nix-cache-action@main
-    - run: nix flake check --impure -L
+    - run: nix flake check --impure --print-build-logs
+
     # Uncomment to push to cachix after successful tests
     # Requires apps.push-cachix to be uncommented in flake.nix
     # - name: Push to Cachix
