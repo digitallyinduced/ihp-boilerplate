@@ -29,14 +29,16 @@
                     haskellPackages = p: with p; [
                         # Haskell dependencies go here
                         p.ihp
-                        cabal-install
                         base
                         wai
                         text
                         # ihp-mail
                         # See https://ihp.digitallyinduced.com/Guide/mail.html
-
-                        # Uncomment on local development for testing
+                    ];
+                    devHaskellPackages = p: with p; [
+                        cabal-install
+                        hlint
+                        # Uncomment for testing
                         # hspec
                     ];
                 };
