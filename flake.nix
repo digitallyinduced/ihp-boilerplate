@@ -81,14 +81,14 @@
                 # Uncomment and set your cachix cache name
                 # apps.push-cachix = let cachixName = "CHANGE-ME"; in {
                 #     type = "app";
-                #     program = pkgs.writeShellScript "push-cachix" ''
+                #     program = toString (pkgs.writeShellScript "push-cachix" ''
                 #         set -eu
                 #         echo "Pushing dev shell to cachix..."
                 #         nix path-info --recursive ''${self'.devShells.default} | ''${pkgs.cachix}/bin/cachix push ''${cachixName}
                 #
                 #         echo "Pushing prod server to cachix..."
                 #         nix path-info --recursive ''${self'.packages.unoptimized-prod-server} | ''${pkgs.cachix}/bin/cachix push ''${cachixName}
-                #     '';
+                #     '');
                 # };
 
                 # Custom configuration that will start with `devenv up`

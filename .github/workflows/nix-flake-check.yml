@@ -27,6 +27,8 @@ jobs:
     #     name: CHANGE-ME
     #     skipPush: true
     - uses: DeterminateSystems/magic-nix-cache-action@main
+      with:
+        use-flakehub: false
     - run: nix flake check --impure --print-build-logs
 
     # Uncomment to push to cachix after successful tests
