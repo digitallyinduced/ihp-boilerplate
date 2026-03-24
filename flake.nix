@@ -41,18 +41,39 @@
                         base
                         wai
                         text
-                        # ihp-mail
-                        # See https://ihp.digitallyinduced.com/Guide/mail.html
-
-                        # Uncomment for testing
-                        # hspec
-                        # ihp-hspec
+                        # ihp-mail           # Email support: https://ihp.digitallyinduced.com/Guide/mail.html
+                        # ihp-datasync       # Real-time DataSync
+                        # ihp-job-dashboard  # Job dashboard UI
+                        # ihp-typed-sql      # Type-safe SQL queries
+                        # ihp-pglistener     # PostgreSQL LISTEN/NOTIFY
                     ];
                     devHaskellPackages = p: with p; [
                         cabal-install
-                        # hlint
-                        # fourmolu
+                        hlint
+                        hspec
+                        ihp-hspec
                     ];
+
+                    # Hoogle documentation server (enabled by default on port 8002)
+                    # withHoogle = false; # Disable to save memory
+
+                    # Disable relation type machinery for faster compilation
+                    # relationSupport = false;
+
+                    # Skip tests/haddock for specific packages to speed up builds
+                    # dontCheckPackages = [ "my-package" ];
+                    # doJailbreakPackages = [ "my-package" ];
+                    # dontHaddockPackages = [ "my-package" ];
+
+                    # Production build tuning
+                    # optimizationLevel = "2"; # Default: "1", use "2" for more optimized production binaries
+                    # rtsFlags = "-A96m -N"; # GHC runtime flags for compiled binaries
+
+                    # Mount additional directories under /static/ in production builds
+                    # static.extraDirs = {
+                    #     # Frontend = self.packages.${system}.frontend;
+                    # };
+                    # static.makeBundling = true; # Set false if not using Makefile for CSS/JS bundling
                 };
 
                 # Push dev shell and prod server closures to cachix
@@ -73,6 +94,9 @@
                 devenv.shells.default = {
                     # Start Mailhog on local development to catch outgoing emails
                     # services.mailhog.enable = true;
+
+                    # PostgreSQL extensions
+                    # services.postgres.extensions = extensions: [ extensions.postgis ];
 
                     # Custom processes that don't appear in https://devenv.sh/reference/options/
                     processes = {
