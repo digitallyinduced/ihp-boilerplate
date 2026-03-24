@@ -1,0 +1,24 @@
+name: Test
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - uses: wimpysworld/nothing-but-nix@main
+      with:
+        hatchet-protocol: 'rampage'
+    - uses: DeterminateSystems/nix-installer-action@main
+      with:
+        determinate: true
+        extra-conf: "lazy-trees = true"
+    - uses: cachix/cachix-action@v16
+      with:
+        name: digitallyinduced
+        skipPush: true
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+    - run: nix flake check --impure -L
