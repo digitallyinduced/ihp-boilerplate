@@ -33,3 +33,23 @@ haskellPackages = p: with p; [
 ```
 
 IHP ignores this top-level `lib/` directory when scanning application modules, so local libraries are compiled through their own Cabal packages.
+
+When a local package is reused by multiple applications or needs its own CI, move it into a separate GitHub repository. Keep the generated `default.nix`, add a small `flake.nix` to the package repository, and consume it from the IHP app as a flake input:
+
+```nix
+inputs.my-client.url = "github:my-org/my-client";
+```
+
+Then compile it with the app's Haskell package set:
+
+```nix
+haskellPackages = p: with p; [
+    p.ihp
+    base
+    wai
+    text
+    (p.callPackage (my-client + "/default.nix") {})
+];
+```
+
+This keeps the dependency pinned through `flake.lock` while avoiding a separate GHC/package set for the library.
