@@ -36,6 +36,16 @@ The deployment job runs after successful tests and only for the `main` branch. I
 5. Sets up direnv
 6. Deploys to a NixOS server
 
+## Tailwind CSS (Optional)
+
+This project includes optional Tailwind CSS support. To enable:
+
+1. Uncomment the `packages.frontend` block in `flake.nix`
+2. Adapt the build paths to match your project structure
+
+You can check the Tailwind build by executing `nix build .#frontend`
+
+
 ## Setup Instructions
 
 To use the GitHub Actions workflow in this project:
