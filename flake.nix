@@ -96,12 +96,14 @@
             "https://devenv.cachix.org"
             "https://cachix.cachix.org"
             "https://digitallyinduced.cachix.org"
+            "https://cache.digitallyinduced.com/public"
             # "https://CHANGE-ME.cachix.org"
         ];
         extra-trusted-public-keys = [
             "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
             "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
             "digitallyinduced.cachix.org-1:y+wQvrnxQ+PdEsCt91rmvv39qRCYzEgGQaldK26hCKE="
+            "public:kR6JCoqAIMaO4s+EdDGh+jsHEHnoLq4ZLJPMCo0hcIQ="
             # "CHANGE-ME.cachix.org-1:CHANGE-ME-PUBLIC-KEY"
         ];
     };
