@@ -48,8 +48,10 @@
                     # Hoogle documentation server (enabled by default on port 8002)
                     # withHoogle = false; # Disable to save memory
 
-                    # Disable relation type machinery for faster compilation
-                    # relationSupport = false;
+                    # Disable relation type machinery for faster compilation.
+                    # Coding agents usually don't need this because they use typedSql instead.
+                    # Human-written app code may prefer fetchRelated/Include; set this to true in that case.
+                    relationSupport = false;
 
                     # Skip tests/haddock for specific packages to speed up builds
                     # dontCheckPackages = [ "my-package" ];
