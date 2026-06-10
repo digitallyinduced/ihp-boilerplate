@@ -64,9 +64,11 @@
 
     services.ihp = {
         domain = "CHANGE-ME.com";
-        migrations = ./Application/Migration;
-        schema = ./Application/Schema.sql;
-        fixtures = ./Application/Fixtures.sql;
+        # Paths are relative to this file (Config/nix/hosts/production/), so reach
+        # back up to the project root where the Application/ directory lives.
+        migrations = ../../../../Application/Migration;
+        schema = ../../../../Application/Schema.sql;
+        fixtures = ../../../../Application/Fixtures.sql;
         sessionSecret = "CHANGE-ME";
         # Uncomment to use a custom database URL
         # databaseUrl = lib.mkForce "postgresql://postgres:...CHANGE-ME";
