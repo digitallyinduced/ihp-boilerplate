@@ -11,6 +11,11 @@
         ihp.nixosModules.appWithPostgres
     ];
 
+    # The IHP module sets `programs.vim.defaultEditor = true`, but nixpkgs 25.05
+    # asserts that this requires `programs.vim.enable = true`. We don't need vim
+    # for deployment, so disable the default-editor setting to satisfy the assertion.
+    programs.vim.defaultEditor = lib.mkForce false;
+
     networking.firewall = {
         enable = true;
         allowedTCPPorts = [ 22 80 443 ];
