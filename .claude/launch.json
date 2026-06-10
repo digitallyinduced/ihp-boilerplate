@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "IHP App",
+      "runtimeExecutable": "devenv",
+      "runtimeArgs": ["up"],
+      "port": 8000,
+      "autoPort": true
+    }
+  ]
+}
