@@ -11,6 +11,11 @@
         ihp.nixosModules.appWithPostgres
     ];
 
+    # The IHP module sets `programs.vim.defaultEditor = true`, but nixpkgs 25.05
+    # asserts that this requires `programs.vim.enable = true`. We don't need vim
+    # for deployment, so disable the default-editor setting to satisfy the assertion.
+    programs.vim.defaultEditor = lib.mkForce false;
+
     networking.firewall = {
         enable = true;
         allowedTCPPorts = [ 22 80 443 ];
@@ -59,9 +64,11 @@
 
     services.ihp = {
         domain = "CHANGE-ME.com";
-        migrations = ./Application/Migration;
-        schema = ./Application/Schema.sql;
-        fixtures = ./Application/Fixtures.sql;
+        # Paths are relative to this file (Config/nix/hosts/production/), so reach
+        # back up to the project root where the Application/ directory lives.
+        migrations = ../../../../Application/Migration;
+        schema = ../../../../Application/Schema.sql;
+        fixtures = ../../../../Application/Fixtures.sql;
         sessionSecret = "CHANGE-ME";
         # Uncomment to use a custom database URL
         # databaseUrl = lib.mkForce "postgresql://postgres:...CHANGE-ME";
