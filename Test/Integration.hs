@@ -3,7 +3,6 @@ module Main where
 import Test.Hspec
 import IHP.Prelude
 import IHP.ModelSupport
-import IHP.Log.Types
 import System.Environment (lookupEnv)
 
 -- Integration tests run with a temporary PostgreSQL database.
@@ -14,8 +13,7 @@ main = do
     databaseUrl <- lookupEnv "DATABASE_URL" >>= \case
         Just url -> pure (cs url)
         Nothing -> error "DATABASE_URL not set. Run `devenv up` first or use `nix flake check`."
-    logger <- newLogger def { level = Warn }
-    withModelContext databaseUrl logger \modelContext -> do
+    withModelContext databaseUrl noopLogger \modelContext -> do
         let ?modelContext = modelContext
         hspec do
             describe "Database" do
