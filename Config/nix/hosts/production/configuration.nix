@@ -94,6 +94,25 @@
     # it is essential to enable automatic updates.
     # @see https://nixos.wiki/wiki/Automatic_system_upgrades
     system.autoUpgrade.enable = true;
+
+    # Reboot weekly to re-anchor long-lived daemons and pick up kernel
+    # updates pulled in by the automatic upgrade above.
+    systemd.services.weekly-reboot = {
+        description = "Weekly reboot to re-anchor long-lived daemons";
+        serviceConfig.Type = "oneshot";
+        # Use `reboot.target` rather than `systemctl reboot`: the latter goes
+        # through logind over D-Bus, so if logind wedges the reboot fails and
+        # the host silently stops rebooting. `reboot.target` asks PID 1
+        # directly and still performs an orderly shutdown.
+        script = "${pkgs.systemd}/bin/systemctl start reboot.target";
+    };
+    systemd.timers.weekly-reboot = {
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+            OnCalendar = "Sun 04:00";
+            Persistent = true;
+        };
+    };
     # Keep as is. See https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     system.stateVersion = "25.05";
 }
